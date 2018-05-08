@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <script>
+        let pokemon = document.URL.substring(document.URL.indexOf('=') + 1); // Variable for grabbing the pokemon in the URL after the =
+
+        let xhr = new XMLHttpRequest(); // XML Request
+        xhr.onreadystatechange = function() {
+            if (this.readyState === this.DONE) {
+                console.log(this.status) // do something; the request has completed
+            }
+        }
+        xhr.open("GET", "https://pokeapi.co/api/v2/pokemon-species/620/", false); // Requesting all the pokemon in the database
+        xhr.send(); // sending the request
+        let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
+        console.log(pokeObject); // Logging the object
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
