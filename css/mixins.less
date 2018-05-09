@@ -1,0 +1,73 @@
+// out: null
+/* Parametric mixins */
+
+// Parametric mixin for headings 
+.headingStyle(@paramColor;
+@paramSize) {
+    color: @paramColor;
+    font-size: @paramSize;
+    font-weight: bold;
+    line-height: @paramSize;
+    margin-top: @paramSize / 4;
+    margin-bottom: @paramSize / 4;
+    text-transform: uppercase;
+}
+
+// Parametric Mixin for Border Radius and Background Color
+.borderRadiusandbgColor(@paramRadius: 5px;
+@paramBackgroundcolor: #AAA;
+) {
+    -moz-border-radius: @paramRadius;
+    -ms-border-radius: @paramRadius;
+    -o-border-radius: @paramRadius;
+    -webkit-border-radius: @paramRadius;
+    border-radius: @paramRadius;
+    background-color: @paramBackgroundcolor;
+}
+
+// Parametric Mixin for Drop Shadow 
+.dropShadow(@paramX: 2px;
+@paramY: 2px;
+@paramBlur: 5px;
+@paramColor: #AAA;
+) {
+    -webkit-box-shadow: @paramX @paramY @paramBlur @paramColor;
+    -moz-box-shadow: @paramX @paramY @paramBlur @paramColor;
+    box-shadow: @paramX @paramY @paramBlur @paramColor;
+}
+
+// Parametric Mixin for Linear Gradient
+.linearGradient(@paramDirection: left;
+@paramColor1: #CCC;
+@paramColor2: #AAA;
+) {
+    background: @paramColor1;
+    background: -o-linear-gradient(@paramDirection, @paramColor1, @paramColor2);
+    background: -moz-linear-gradient(@paramDirection, @paramColor1, @paramColor2);
+    background: linear-gradient(@paramDirection, @paramColor1, @paramColor2);
+}
+
+// Parametric Mixin for Transparency 
+.transparent(@ParamTrans: .5;
+) {
+    opacity: @ParamTrans;
+}
+
+// Non parametric mixins
+.expand() {
+    transform: scale(1.1);
+    display: inline-block;
+}
+
+.imageFlip() {
+    transform: scaleX(-1);
+}
+
+// Project Mixins
+.gothic() {
+    font-family: 'Gothic A1', sans-serif;
+}
+
+.roboto() {
+    font-family: 'Roboto', sans-serif;
+}

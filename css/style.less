@@ -1,0 +1,76 @@
+/* style.less
+
+Project: Pokedex
+Programmer: Jared Martinez
+Date: 5/8/2018
+
+*/
+
+@import 'palette.less';
+@import 'mixins.less';
+
+/* mobile styles */
+
+body {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.5;
+    color: @darkcolor;
+    background-color: @lightcolor;
+}
+
+header {
+    background-image: url(../images/header.jpg);
+    background-size: cover;
+    height: 200px;
+    border-bottom: .5em solid @color1;
+    h1 {
+        font-size: 225%;
+        .gothic;
+        text-align: center;
+        padding: 2%;
+        padding-top: 5%;
+        color: @lightcolor;
+    }
+}
+
+main {
+    div.col {
+        margin-top: 2em;
+        width: 95%;
+        margin-left: 2.5%;
+        background-color: @color1;
+        padding: 5%;
+        border-radius: 10px;
+        text-align: center;
+        input {
+            .roboto;
+            border: none;
+            border-radius: 5px;
+            font-size: 108%;
+            padding-left: .5%;
+            &:focus {
+                outline: none;
+            }
+        }
+        button {
+            .roboto;
+            border: none;
+            border-radius: 5px;
+            font-size: 108%;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+footer {}
+
+/* Tablet Styles */
+
+@media only screen and (min-width: 481px) {}
+
+/* Desktop Styles */
+
+@media only screen and (min-width: 1025px) {}
