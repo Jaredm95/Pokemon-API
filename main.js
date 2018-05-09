@@ -113,9 +113,6 @@ function loadingPage(pokeObject) {
     } // Loop ends when stats runs out
     
     /* Evolution */
-    if (evolution.chain.evolves_to.hasOwnProperty()){
-        
-    }
 }
 
 // Function for calling the API with new URL's, used fo gathering additional information that isn't in the original JSON object
