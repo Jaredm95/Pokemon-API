@@ -35,7 +35,43 @@ header {
 }
 
 main {
-    div.col {
+    div.span_4_of_12{
+        text-align: center;
+    }
+    h1 {
+        font-size: 200%;
+        text-align: center;
+        .gothic;
+        padding-bottom: .5em;
+    }
+    p#desc {
+        width: 95%;
+        margin-left: 2.5%;
+        margin-bottom: 1em;
+        .roboto;
+    }
+    h3 {
+        font-size: 150%;
+        padding: 1%;
+        .gothic;
+        text-align: center;
+        width: 95%;
+        margin-left: 2.5%;
+        border-bottom: 1px solid lightgrey;
+    }
+    ul {
+        margin-left: 2.5%;
+        .roboto;
+        li {
+            padding: 2%;
+            text-transform: capitalize;
+        }
+        &#evo{
+            list-style-type: decimal;
+            margin-left: 1.5em;
+        }
+    }
+    div.span_12_of_12 {
         margin-top: 2em;
         width: 95%;
         margin-left: 2.5%;
@@ -54,6 +90,7 @@ main {
             }
         }
         button {
+            background-color: lightgrey;
             .roboto;
             border: none;
             border-radius: 5px;
@@ -65,7 +102,23 @@ main {
     }
 }
 
-footer {}
+footer {
+    background-color: @color1;
+    color: @lightcolor;
+    margin-top: 80%;
+    padding-bottom: 1em;
+    font-size: 125%;
+    div.col {
+        width: 95%;
+        margin-left: 2.5%;
+        text-align: center;
+        a {
+            color: @color5;
+            text-decoration: none;
+            border-bottom: 1px @color5 solid;
+        }
+    }
+}
 
 /* Tablet Styles */
 

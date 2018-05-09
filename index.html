@@ -29,21 +29,31 @@
     <script src="js/script.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body onload="getYear();">
     <header>
         <h1>Welcome to the Pokedex</h1>
     </header>
     <main>
         <section class="section group">
-        <div class="col span_12_of_12">
-            <input type="text" onchange="getSearchValue();" id="search" placeholder="Search Here...">
-            <button onclick="getSearchValue();">Submit</button>
-        </div>
-        <!-- Calling the search function -->
-        <p id="here"></p>
+            <div class="col span_12_of_12">
+                <input type="text" onchange="getSearchValue();" id="search" placeholder="Search Here...">
+                <button onclick="getSearchValue();">Search</button>
+            </div>
+            <!-- Calling the search function -->
+            <p id="here"></p>
         </section>
     </main>
     <footer>
+        <section class="section group">
+            <div class="col span_12_of_12">
+                <p>Pokedex uses the 
+                    <a href="https://pokeapi.co/">
+                        The pokeapi.co API
+                    </a>
+                </p>
+            </div>
+            <div class="col span_12_of_12">Pokedex created by <a href="">Martinez Development LLC</a> &copy; <span  id ="bottom"></span> </div>
+        </section>
     </footer>
 </body>
 </ html>

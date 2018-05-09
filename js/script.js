@@ -118,7 +118,7 @@ function loadingPage(pokeObject) {
     /* Evolution */
 
     if (evolution.chain.evolves_to.length > 0) {
-        document.getElementById("evoTitle").style.display = "inline";
+        document.getElementById("evoTitle").style.display = "block";
         let evoList = document.getElementById("evo");
         /* Starting Pokemon */
         let baseState = document.createElement("li");
@@ -149,4 +149,10 @@ function gettingMoreInfo(pokemonID) {
     console.log(pokeObject); // Logging the object
 
     return pokeObject; // Returning the JSON data
+}
+
+// Function for setting the date in the footer
+function getYear(){
+    let d = new Date();
+    document.getElementById("bottom").innerHTML = d.getFullYear();
 }
