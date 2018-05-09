@@ -1,3 +1,49 @@
+/* Index Page */
+
+// Function for collecting the value of the user search
+function getSearchValue() {
+
+    var value = document.getElementById("search").value; // Getting the value of the search
+
+    searchingForPoke(value); // Calling the function that searchs the API results
+
+}
+
+// Function for calling the Pokemon API for the inital Search
+function callingPokemon() {
+    // https://pokeapi.co/ <-- Pokemon api
+
+    var xhr = new XMLHttpRequest(); // XML Request
+    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=1000&offset=0", false); // Requesting all the pokemon in the database
+    xhr.send(); // sending the request
+    console.log(xhr.status); // Logging the status of the request
+    var pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
+    console.log(pokeObject); // Logging the object 
+
+    return pokeObject; // returning the JSON results
+}
+
+// function for searching for the Pokemon
+function searchingForPoke(poke) {
+
+    let pokemon = poke.toLowerCase(); // Variable for the Pokemon name that was searched
+
+    let pokeObject = callingPokemon(); // Calling the Function that calls the Pokemon API
+    let x = 0;
+    // Loop for searching the results of the API call and comparing them to the search
+    while (pokemon != pokeObject.results[x].name && x < pokeObject.results.length - 1) {
+        x++; // Add the counter 
+    }
+    if (x < pokeObject.results.length - 1) { // Calling the Search page 
+        window.location = "search.html?=" + pokemon;
+    } else { // Displaying the error message
+        document.getElementById("here").innerHTML = "Search Not found";
+    }
+
+}
+
+/* Search Results Page */
+
 // Function for calling the API with the search from the index page
 function initPokemon() {
     let pokemon = document.URL.substring(document.URL.indexOf('=') + 1); // Variable for grabbing the pokemon in the URL after the =
@@ -70,48 +116,6 @@ function loadingPage(pokeObject) {
     
     /* Evolution */
     
-}
-
-// Function for calling the Pokemon API for the inital Search
-function callingPokemon() {
-    // https://pokeapi.co/ <-- Pokemon api
-
-    var xhr = new XMLHttpRequest(); // XML Request
-    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=1000&offset=0", false); // Requesting all the pokemon in the database
-    xhr.send(); // sending the request
-    console.log(xhr.status); // Logging the status of the request
-    var pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
-    console.log(pokeObject); // Logging the object 
-
-    return pokeObject; // returning the JSON results
-}
-
-// Function for collecting the value of the user search
-function getSearchValue() {
-
-    var value = document.getElementById("search").value; // Getting the value of the search
-
-    searchingForPoke(value); // Calling the function that searchs the API results
-
-}
-
-// function for searching for the Pokemon
-function searchingForPoke(poke) {
-
-    let pokemon = poke.toLowerCase(); // Variable for the Pokemon name that was searched
-
-    let pokeObject = callingPokemon(); // Calling the Function that calls the Pokemon API
-    let x = 0;
-    // Loop for searching the results of the API call and comparing them to the search
-    while (pokemon != pokeObject.results[x].name && x < pokeObject.results.length - 1) {
-        x++; // Add the counter 
-    }
-    if (x < pokeObject.results.length - 1) { // Calling the Search page 
-        window.location = "search.html?=" + pokemon;
-    } else { // Displaying the error message
-        document.getElementById("here").innerHTML = "Search Not found";
-    }
-
 }
 
 // Function for calling the API with new URL's, used fo gathering additional information that isn't in the original JSON object
