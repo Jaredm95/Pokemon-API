@@ -2,8 +2,7 @@
 
 // Function for collecting the value of the user search
 function getSearchValue() {
-
-    var value = document.getElementById("search").value; // Getting the value of the search
+    let value = document.getElementById("search").value; // Getting the value of the search
 
     searchingForPoke(value); // Calling the function that searchs the API results
 
@@ -13,11 +12,11 @@ function getSearchValue() {
 function callingPokemon() {
     // https://pokeapi.co/ <-- Pokemon api
 
-    var xhr = new XMLHttpRequest(); // XML Request
+    let xhr = new XMLHttpRequest(); // XML Request
     xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=1000&offset=0", false); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
     console.log(xhr.status); // Logging the status of the request
-    var pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
+    let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
     console.log(pokeObject); // Logging the object 
 
     return pokeObject; // returning the JSON results
@@ -25,7 +24,6 @@ function callingPokemon() {
 
 // function for searching for the Pokemon
 function searchingForPoke(poke) {
-
     let pokemon = poke.toLowerCase(); // Variable for the Pokemon name that was searched
 
     let pokeObject = callingPokemon(); // Calling the Function that calls the Pokemon API
@@ -115,7 +113,9 @@ function loadingPage(pokeObject) {
     } // Loop ends when stats runs out
     
     /* Evolution */
-    
+    if (evolution.chain.evolves_to.hasOwnProperty()){
+        
+    }
 }
 
 // Function for calling the API with new URL's, used fo gathering additional information that isn't in the original JSON object
