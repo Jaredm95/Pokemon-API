@@ -13,7 +13,7 @@ function callingPokemon() {
     // https://pokeapi.co/ <-- Pokemon api
 
     let xhr = new XMLHttpRequest(); // XML Request
-    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=1000&offset=0", false); // Requesting all the pokemon in the database
+    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=949&offset=0", false); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
     console.log(xhr.status); // Logging the status of the request
     let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
@@ -90,7 +90,13 @@ function loadingPage(pokeObject) {
 
     /* Description */
 
-    document.getElementById("desc").innerHTML = pokemon.flavor_text_entries[1].flavor_text; // Displaying the EN Description of the Pokemon
+    // document.getElementById("desc").innerHTML = pokemon.flavor_text_entries[1].flavor_text; // Displaying the EN Description of the Pokemon
+    for (let x = 0; x < pokemon.flavor_text_entries.length; x++) {
+        if (pokemon.flavor_text_entries[x].language.name == "en") {
+            document.getElementById("desc").innerHTML = pokemon.flavor_text_entries[x].flavor_text;
+            break;
+        }
+    }
 
     /* Moves */
 
@@ -116,8 +122,20 @@ function loadingPage(pokeObject) {
     } // Loop ends when stats runs out
 
     /* Evolution */
+    if (evolution.chain.evolves_to.length > 1) {
+        document.getElementById("evoTitle").style.display = "block";
+        let evoList = document.getElementById("evo");
+        /* Starting Pokemon */
+        let baseState = document.createElement("li");
+        baseState.innerHTML = evolution.chain.species.name;
+        evoList.appendChild(baseState);
+        for (let x = 0; x < evolution.chain.evolves_to.length; x++) {
+            let evoOne = document.createElement("li");
+            evoOne.innerHTML = evolution.chain.evolves_to[x].species.name;
+            evoList.appendChild(evoOne);
+        }
 
-    if (evolution.chain.evolves_to.length > 0) {
+    } else if (evolution.chain.evolves_to.length > 0) {
         document.getElementById("evoTitle").style.display = "block";
         let evoList = document.getElementById("evo");
         /* Starting Pokemon */
@@ -152,7 +170,7 @@ function gettingMoreInfo(pokemonID) {
 }
 
 // Function for setting the date in the footer
-function getYear(){
+function getYear() {
     let d = new Date();
     document.getElementById("bottom").innerHTML = d.getFullYear();
 }
