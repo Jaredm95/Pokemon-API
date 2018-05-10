@@ -35,7 +35,7 @@ header {
 }
 
 main {
-    div.span_4_of_12{
+    div.span_12_of_12{
         text-align: center;
     }
     h1 {
@@ -68,21 +68,23 @@ main {
         }
         &#evo{
             list-style-type: decimal;
-            margin-left: 1.5em;
+            list-style-position: inside;
+            margin-left: 2.5%;
         }
     }
-    div.span_12_of_12 {
+    div.form {
         margin-top: 2em;
         width: 95%;
         margin-left: 2.5%;
         background-color: @color1;
-        padding: 5%;
+        padding: 3%;
         border-radius: 10px;
         text-align: center;
         input {
             .roboto;
             border: none;
             border-radius: 5px;
+            width: 70%;
             font-size: 108%;
             padding-left: .5%;
             &:focus {
@@ -95,10 +97,18 @@ main {
             border: none;
             border-radius: 5px;
             font-size: 108%;
+            width: 28%;
             &:focus {
                 outline: none;
             }
         }
+    }
+    p#here{
+        font-size: 150%;
+        text-align: center;
+        color: @color1;
+        .gothic;
+        margin-top: 1em;
     }
 }
 
@@ -118,12 +128,39 @@ footer {
             border-bottom: 1px @color5 solid;
         }
     }
+    &.searchPage{
+        margin-top: .5em;
+    }
 }
 
 /* Tablet Styles */
 
-@media only screen and (min-width: 481px) {}
+@media only screen and (min-width: 481px) {
+    body{
+        font-size: 18px;
+    }
+    main{
+        div.form{
+            padding: 1.5%;
+        }
+    }
+}
 
 /* Desktop Styles */
 
-@media only screen and (min-width: 1025px) {}
+@media only screen and (min-width: 1025px) {
+    body{
+        font-size: 20px;
+    }
+    main{
+        div.form{
+            margin-left: 2.5%;
+        }
+    }
+    header{
+        height: 400px;
+    }
+    footer{
+        margin-top: 25%;
+    }
+}

@@ -37,7 +37,7 @@ header h1 {
   padding-top: 5%;
   color: #ffffff;
 }
-main div.span_4_of_12 {
+main div.span_12_of_12 {
   text-align: center;
 }
 main h1 {
@@ -71,36 +71,46 @@ main ul li {
 }
 main ul#evo {
   list-style-type: decimal;
-  margin-left: 1.5em;
+  list-style-position: inside;
+  margin-left: 2.5%;
 }
-main div.span_12_of_12 {
+main div.form {
   margin-top: 2em;
   width: 95%;
   margin-left: 2.5%;
   background-color: #b72c3d;
-  padding: 5%;
+  padding: 3%;
   border-radius: 10px;
   text-align: center;
 }
-main div.span_12_of_12 input {
+main div.form input {
   font-family: 'Roboto', sans-serif;
   border: none;
   border-radius: 5px;
+  width: 70%;
   font-size: 108%;
   padding-left: .5%;
 }
-main div.span_12_of_12 input:focus {
+main div.form input:focus {
   outline: none;
 }
-main div.span_12_of_12 button {
+main div.form button {
   background-color: lightgrey;
   font-family: 'Roboto', sans-serif;
   border: none;
   border-radius: 5px;
   font-size: 108%;
+  width: 28%;
 }
-main div.span_12_of_12 button:focus {
+main div.form button:focus {
   outline: none;
+}
+main p#here {
+  font-size: 150%;
+  text-align: center;
+  color: #b72c3d;
+  font-family: 'Gothic A1', sans-serif;
+  margin-top: 1em;
 }
 footer {
   background-color: #b72c3d;
@@ -119,5 +129,30 @@ footer div.col a {
   text-decoration: none;
   border-bottom: 1px #f9f8fc solid;
 }
+footer.searchPage {
+  margin-top: .5em;
+}
 /* Tablet Styles */
+@media only screen and (min-width: 481px) {
+  body {
+    font-size: 18px;
+  }
+  main div.form {
+    padding: 1.5%;
+  }
+}
 /* Desktop Styles */
+@media only screen and (min-width: 1025px) {
+  body {
+    font-size: 20px;
+  }
+  main div.form {
+    margin-left: 2.5%;
+  }
+  header {
+    height: 400px;
+  }
+  footer {
+    margin-top: 25%;
+  }
+}
