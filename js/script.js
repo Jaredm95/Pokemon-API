@@ -13,7 +13,7 @@ function callingPokemon() {
     // https://pokeapi.co/ <-- Pokemon api
 
     let xhr = new XMLHttpRequest(); // XML Request
-    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=949&offset=0", false); // Requesting all the pokemon in the database
+    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=949", false); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
     console.log(xhr.status); // Logging the status of the request
     let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
