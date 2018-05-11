@@ -37,7 +37,7 @@ header h1 {
   padding-top: 5%;
   color: #ffffff;
 }
-main div.span_12_of_12 {
+main div.pic {
   text-align: center;
 }
 main h1 {
@@ -87,8 +87,8 @@ main div.form input {
   font-family: 'Roboto', sans-serif;
   border: none;
   border-radius: 5px;
-  width: 70%;
-  font-size: 108%;
+  width: 85%;
+  font-size: 100%;
   padding-left: .5%;
 }
 main div.form input:focus {
@@ -99,8 +99,8 @@ main div.form button {
   font-family: 'Roboto', sans-serif;
   border: none;
   border-radius: 5px;
-  font-size: 108%;
-  width: 28%;
+  font-size: 100%;
+  width: 10%;
 }
 main div.form button:focus {
   outline: none;
@@ -143,11 +143,14 @@ footer.searchPage {
 }
 /* Desktop Styles */
 @media only screen and (min-width: 1025px) {
-  body {
-    font-size: 20px;
-  }
   main div.form {
     margin-left: 2.5%;
+  }
+  main div.form input {
+    width: 90%;
+  }
+  main div.form button {
+    width: 5%;
   }
   header {
     height: 400px;

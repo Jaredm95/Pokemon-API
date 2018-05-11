@@ -35,7 +35,7 @@ header {
 }
 
 main {
-    div.span_12_of_12{
+    div.pic {
         text-align: center;
     }
     h1 {
@@ -66,7 +66,7 @@ main {
             padding: 2%;
             text-transform: capitalize;
         }
-        &#evo{
+        &#evo {
             list-style-type: decimal;
             list-style-position: inside;
             margin-left: 2.5%;
@@ -84,8 +84,8 @@ main {
             .roboto;
             border: none;
             border-radius: 5px;
-            width: 70%;
-            font-size: 108%;
+            width: 85%;
+            font-size: 100%;
             padding-left: .5%;
             &:focus {
                 outline: none;
@@ -96,14 +96,14 @@ main {
             .roboto;
             border: none;
             border-radius: 5px;
-            font-size: 108%;
-            width: 28%;
+            font-size: 100%;
+            width: 10%;
             &:focus {
                 outline: none;
             }
         }
     }
-    p#here{
+    p#here {
         font-size: 150%;
         text-align: center;
         color: @color1;
@@ -128,7 +128,7 @@ footer {
             border-bottom: 1px @color5 solid;
         }
     }
-    &.searchPage{
+    &.searchPage {
         margin-top: .5em;
     }
 }
@@ -136,11 +136,11 @@ footer {
 /* Tablet Styles */
 
 @media only screen and (min-width: 481px) {
-    body{
+    body {
         font-size: 18px;
     }
-    main{
-        div.form{
+    main {
+        div.form {
             padding: 1.5%;
         }
     }
@@ -149,18 +149,21 @@ footer {
 /* Desktop Styles */
 
 @media only screen and (min-width: 1025px) {
-    body{
-        font-size: 20px;
-    }
-    main{
-        div.form{
+    main {
+        div.form {
             margin-left: 2.5%;
+            input{
+                width: 90%;
+            }
+            button{
+                width: 5%;
+            }
         }
     }
-    header{
+    header {
         height: 400px;
     }
-    footer{
+    footer {
         margin-top: 25%;
     }
 }

@@ -84,9 +84,8 @@ function loadingPage(pokeObject) {
 
     let title = document.getElementById("title") // variable for the main title of the page
 
-    let pokeName = pokeObject.name; // Variable for the Pokemon Name
 
-    title.innerHTML = pokeName.charAt(0).toUpperCase() + pokeName.slice(1); // Displaying the Name of the Pokemon Searched, with the first letter uppercase.
+    title.innerHTML = pokeObject.name; // Displaying the Name of the Pokemon Searched, with the first letter uppercase.
 
     /* Description */
 
