@@ -45,6 +45,7 @@ main h1 {
   text-align: center;
   font-family: 'Gothic A1', sans-serif;
   padding-bottom: .5em;
+  text-transform: capitalize;
 }
 main p#desc {
   width: 95%;

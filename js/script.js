@@ -76,16 +76,22 @@ function loadingPage(pokeObject) {
     let spriteFour = document.getElementById("spriteFour"); // Variable for the forth picture
 
     spriteOne.src = pokeObject.sprites.front_default; // Pulling in image one
-    spriteTwo.src = pokeObject.sprites.front_shiny; // pulling in image two
-    spriteThree.src = pokeObject.sprites.back_default; // pulling in image three
+    spriteTwo.src = pokeObject.sprites.front_shiny; // Pulling in image two
+    spriteThree.src = pokeObject.sprites.back_default; // Pulling in image three
     spriteFour.src = pokeObject.sprites.back_shiny; // Pulling in image four
 
     /* Title */
 
-    let title = document.getElementById("title") // variable for the main title of the page
+    let title = document.getElementById("title") // Variable for the main title of the page
 
+    let pokeName = pokeObject.name; // Variable for the name of the Pokemon
 
-    title.innerHTML = pokeObject.name; // Displaying the Name of the Pokemon Searched, with the first letter uppercase.
+    // Loop for replacing the dashes in the Pokemon Name with spaces
+    for (let y = 0; y < pokeName.length; y++) {
+        pokeName = pokeName.replace("-", " ");// Replace all dashes with spaces
+    } // End of loop
+
+    title.innerHTML = pokeName; // Displaying the Name of the Pokemon Searched, with the first letter uppercase.
 
     /* Description */
 
@@ -103,14 +109,14 @@ function loadingPage(pokeObject) {
 
     // Loop for displaying the moveset of the Pokemon
     for (let x = 0; x < pokeObject.moves.length; x++) {
-        let pokeMove = document.createElement("li"); // Variable for the p tag holding the Pokemon move
+        let pokeMove = document.createElement("li"); // Variable for the List Item holding the Pokemon move
         let moveName = pokeObject.moves[x].move.name; // Vairable for the move name
         // Loop for replacing the dashes in the name with spaces
         for (let i = 0; i < moveName.length; i++) {
             moveName = moveName.replace("-", " "); // Replace all the dashes with spaces
         } // End of Loop
-        pokeMove.innerHTML = moveName; // Providing the move name to the p tag
-        moveset.appendChild(pokeMove); // displaying the p tag in the moveset section
+        pokeMove.innerHTML = moveName; // Providing the move name to the List Item
+        moveset.appendChild(pokeMove); // displaying the List Item in the moveset section
     } // Loop ends when the moves run out
 
     /* Stats */
