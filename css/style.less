@@ -72,6 +72,22 @@ main {
             margin-left: 2.5%;
         }
     }
+    ul#stats{
+        li{
+            float: left;
+            width: 65%;
+        }
+        meter{
+            padding: 1%;
+            float: left;
+            width: 30%;
+            color: @color1;
+            transition: width .5s;
+            &:nth-of-type(1){
+                margin-top: 1%;
+            }
+        }
+    }
     div.form {
         margin-top: 2em;
         width: 95%;
