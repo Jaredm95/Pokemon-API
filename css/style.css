@@ -74,6 +74,19 @@ main ul#evo {
   list-style-position: inside;
   margin-left: 2.5%;
 }
+main ul#stats li {
+  float: left;
+  width: 65%;
+}
+main ul#stats meter {
+  padding: 1%;
+  float: left;
+  width: 30%;
+  transition: width .5s;
+}
+main ul#stats meter:nth-of-type(1) {
+  margin-top: 1%;
+}
 main div.form {
   margin-top: 2em;
   width: 95%;
