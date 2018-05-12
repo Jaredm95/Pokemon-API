@@ -104,7 +104,12 @@ function loadingPage(pokeObject) {
     // Loop for displaying the moveset of the Pokemon
     for (let x = 0; x < pokeObject.moves.length; x++) {
         let pokeMove = document.createElement("li"); // Variable for the p tag holding the Pokemon move
-        pokeMove.innerHTML = pokeObject.moves[x].move.name; // Providing the move name to the p tag
+        let moveName = pokeObject.moves[x].move.name; // Vairable for the move name
+        // Loop for replacing the dashes in the name with spaces
+        for (let i = 0; i < moveName.length; i++) {
+            moveName = moveName.replace("-", " "); // Replace all the dashes with spaces
+        } // End of Loop
+        pokeMove.innerHTML = moveName; // Providing the move name to the p tag
         moveset.appendChild(pokeMove); // displaying the p tag in the moveset section
     } // Loop ends when the moves run out
 
@@ -143,7 +148,7 @@ function loadingPage(pokeObject) {
     } else if (evolution.chain.evolves_to.length > 0) { // If the pokemon evolves into one Pokemon then do this stuff
         document.getElementById("evoTitle").style.display = "block"; // Displaying the Evolution Title
         let evoList = document.getElementById("evo"); // Variable for the Evolutions Section
-        /* Starting Pokemon */ 
+        /* Starting Pokemon */
         let baseState = document.createElement("li"); // Variable for the First List Item 
         baseState.innerHTML = evolution.chain.species.name; // Filling the first List Item with the name of the starting Pokemon 
         evoList.appendChild(baseState); // Displaying the first List Item 
@@ -167,7 +172,7 @@ function loadingPage(pokeObject) {
     let games = document.getElementById("versions"); // Variable for the Game Versions Section
 
     // Loop for displaying the versions of Pokemon the Pokemon appears in
-    for (let x = 0; x < pokeObject.game_indices.length; x++) { 
+    for (let x = 0; x < pokeObject.game_indices.length; x++) {
         let version = document.createElement("li"); // Variable for the List Item
         let game = pokeObject.game_indices[x].version.name; // Variable for the Game Name
         // Loop for checking the Game name and replacing the dashes with spaces
