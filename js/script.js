@@ -118,8 +118,14 @@ function loadingPage(pokeObject) {
         pokeStat.innerHTML = pokeObject.stats[x].stat.name + ": " + pokeObject.stats[x].base_stat; // Filling the List items with 
 
         stats.appendChild(pokeStat); // Displaying 
+        let statMeter = document.createElement("meter");
+        statMeter.min = 0;
+        statMeter.max = 100;
+        statMeter.value = pokeObject.stats[x].base_stat;
+        
+        stats.appendChild(statMeter);
     } // Loop ends when stats runs out
-
+    
     /* Evolution */
     if (evolution.chain.evolves_to.length > 1) {
         document.getElementById("evoTitle").style.display = "block";
@@ -154,6 +160,8 @@ function loadingPage(pokeObject) {
     } else {
         document.getElementById('evoTitle').style.display = "none";
     }
+    
+    /* Game Version */
 }
 
 // Function for calling the API with new URL's, used fo gathering additional information that isn't in the original JSON object
