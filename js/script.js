@@ -120,7 +120,7 @@ function loadingPage(pokeObject) {
         stats.appendChild(pokeStat); // Displaying the Stat
         let statMeter = document.createElement("meter"); // Variable for the Meter tag
         statMeter.min = 0; // Setting the min value of the meter to 0
-        statMeter.max = 100; // Setting the max value of the Meter to 100
+        statMeter.max = 255; // Setting the max value of the Meter to 255
         statMeter.value = pokeObject.stats[x].base_stat; // Setting the value of the meter
 
         stats.appendChild(statMeter); // Displaying the meter
