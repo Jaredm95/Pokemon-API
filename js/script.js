@@ -89,13 +89,13 @@ function loadingPage(pokeObject) {
 
     /* Description */
 
-    // document.getElementById("desc").innerHTML = pokemon.flavor_text_entries[1].flavor_text; // Displaying the EN Description of the Pokemon
+    // Loop for finding the english Flavor Text
     for (let x = 0; x < pokemon.flavor_text_entries.length; x++) {
-        if (pokemon.flavor_text_entries[x].language.name == "en") {
-            document.getElementById("desc").innerHTML = pokemon.flavor_text_entries[x].flavor_text;
-            break;
-        }
-    }
+        if (pokemon.flavor_text_entries[x].language.name == "en") { // IF the text is listed as english do this stuff
+            document.getElementById("desc").innerHTML = pokemon.flavor_text_entries[x].flavor_text; // Displaying the flavor text
+            break; // Breaking out of the Loop
+        } // End of IF
+    } // End of Loop
 
     /* Moves */
 
@@ -117,51 +117,67 @@ function loadingPage(pokeObject) {
         let pokeStat = document.createElement("li"); // Variable for the List Items 
         pokeStat.innerHTML = pokeObject.stats[x].stat.name + ": " + pokeObject.stats[x].base_stat; // Filling the List items with 
 
-        stats.appendChild(pokeStat); // Displaying 
-        let statMeter = document.createElement("meter");
-        statMeter.min = 0;
-        statMeter.max = 100;
-        statMeter.value = pokeObject.stats[x].base_stat;
-        
-        stats.appendChild(statMeter);
-    } // Loop ends when stats runs out
-    
-    /* Evolution */
-    if (evolution.chain.evolves_to.length > 1) {
-        document.getElementById("evoTitle").style.display = "block";
-        let evoList = document.getElementById("evo");
-        /* Starting Pokemon */
-        let baseState = document.createElement("li");
-        baseState.innerHTML = evolution.chain.species.name;
-        evoList.appendChild(baseState);
-        for (let x = 0; x < evolution.chain.evolves_to.length; x++) {
-            let evoOne = document.createElement("li");
-            evoOne.innerHTML = evolution.chain.evolves_to[x].species.name;
-            evoList.appendChild(evoOne);
-        }
+        stats.appendChild(pokeStat); // Displaying the Stat
+        let statMeter = document.createElement("meter"); // Variable for the Meter tag
+        statMeter.min = 0; // Setting the min value of the meter to 0
+        statMeter.max = 100; // Setting the max value of the Meter to 100
+        statMeter.value = pokeObject.stats[x].base_stat; // Setting the value of the meter
 
-    } else if (evolution.chain.evolves_to.length > 0) {
-        document.getElementById("evoTitle").style.display = "block";
-        let evoList = document.getElementById("evo");
+        stats.appendChild(statMeter); // Displaying the meter
+    } // Loop ends when stats runs out
+
+    /* Evolution */
+    if (evolution.chain.evolves_to.length > 1) { // If the Pokemon can evolve to multiple Pokemon then do this stuff
+        document.getElementById("evoTitle").style.display = "block"; // Display the Evolution Title
+        let evoList = document.getElementById("evo"); // Variable for the Evolutions section
         /* Starting Pokemon */
-        let baseState = document.createElement("li");
-        baseState.innerHTML = evolution.chain.species.name;
-        evoList.appendChild(baseState);
+        let baseState = document.createElement("li"); // Variable for the first List Item
+        baseState.innerHTML = evolution.chain.species.name; // Filling the first List Item with the name of the starting Pokemon
+        evoList.appendChild(baseState); // Displaying the first List Item
+        for (let x = 0; x < evolution.chain.evolves_to.length; x++) { // Loop for displaying all the Pokemon it Evolves too
+            let evoOne = document.createElement("li"); // Variable for the List Item
+            evoOne.innerHTML = evolution.chain.evolves_to[x].species.name; // Filling the List Item with the evolution of the Pokemon
+            evoList.appendChild(evoOne); // Displaying the List Item
+        } // End of Loop
+
+    } else if (evolution.chain.evolves_to.length > 0) { // If the pokemon evolves into one Pokemon then do this stuff
+        document.getElementById("evoTitle").style.display = "block"; // Displaying the Evolution Title
+        let evoList = document.getElementById("evo"); // Variable for the Evolutions Section
+        /* Starting Pokemon */ 
+        let baseState = document.createElement("li"); // Variable for the First List Item 
+        baseState.innerHTML = evolution.chain.species.name; // Filling the first List Item with the name of the starting Pokemon 
+        evoList.appendChild(baseState); // Displaying the first List Item 
         /* Evolution One */
-        let evoOne = document.createElement("li");
-        evoOne.innerHTML = evolution.chain.evolves_to["0"].species.name;
-        evoList.appendChild(evoOne);
+        let evoOne = document.createElement("li"); // Variable for the Second List Item
+        evoOne.innerHTML = evolution.chain.evolves_to["0"].species.name; // Filling the Second List Item with the name of the First Evolution of Pokemon
+        evoList.appendChild(evoOne); // Displaying the First Evolution
         /* Evolution Two */
-        if (evolution.chain.evolves_to[0].evolves_to.length > 0) {
-            let evoTwo = document.createElement("li");
-            evoTwo.innerHTML = evolution.chain.evolves_to["0"].evolves_to["0"].species.name;
-            evoList.appendChild(evoTwo);
-        }
-    } else {
-        document.getElementById('evoTitle').style.display = "none";
+        if (evolution.chain.evolves_to[0].evolves_to.length > 0) { // IF there is an Evolution after the first Evolution then do this stuff
+            let evoTwo = document.createElement("li"); // Variable for the Third List Item
+            evoTwo.innerHTML = evolution.chain.evolves_to["0"].evolves_to["0"].species.name; // Filling the Third List Item with the Name of second Evolution
+            evoList.appendChild(evoTwo); // Displaying the Second Evolution
+            // Shouldn't need another conditional Statement for third Evolutions
+        } // End of IF Statment
+    } else { // End of ELSE IF Statment
+        document.getElementById('evoTitle').style.display = "none"; // Making the Evolution Title not display
+    } // End of ELSE Statment
+
+    /* Game Versions */
+
+    let games = document.getElementById("versions"); // Variable for the Game Versions Section
+
+    // Loop for displaying the versions of Pokemon the Pokemon appears in
+    for (let x = 0; x < pokeObject.game_indices.length; x++) { 
+        let version = document.createElement("li"); // Variable for the List Item
+        let game = pokeObject.game_indices[x].version.name; // Variable for the Game Name
+        // Loop for checking the Game name and replacing the dashes with spaces
+        for (let i = 0; i < game.length; i++) {
+            game = game.replace("-", " "); // Game Name but with spaces
+        } // End of Loop
+        version.innerHTML = game; // Filling the List Item with the Game Name
+
+        games.appendChild(version); // Displaying the Game Name
     }
-    
-    /* Game Version */
 }
 
 // Function for calling the API with new URL's, used fo gathering additional information that isn't in the original JSON object
