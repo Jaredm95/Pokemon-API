@@ -60,6 +60,10 @@ main {
         margin-left: 2.5%;
         border-bottom: 1px solid lightgrey;
     }
+    .fa-chevron-down,
+    .fa-chevron-up {
+        font-size: 85%;
+    }
     ul {
         margin-left: 2.5%;
         .roboto;
@@ -71,19 +75,19 @@ main {
             list-style-type: decimal;
             list-style-position: inside;
             margin-left: 2.5%;
+            transition: ease .9s;
         }
     }
-    ul#stats{
-        li{
+    ul#stats {
+        li {
             float: left;
             width: 65%;
         }
-        meter{
+        meter {
             padding: 1%;
             float: left;
             width: 30%;
-            transition: width .5s;
-            &:nth-of-type(1){
+            &:nth-of-type(1) {
                 margin-top: 1%;
             }
         }
@@ -168,11 +172,26 @@ footer {
     main {
         div.form {
             margin-left: 2.5%;
-            input{
+            input {
                 width: 90%;
             }
-            button{
+            button {
                 width: 5%;
+            }
+        }
+        .fa-chevron-down,
+        .fa-chevron-up {
+            display: none;
+        }
+        #evo,
+        #stats,
+        #moves,
+        #versions{
+            display: block !important;
+        }
+        ul#stats{
+            meter{
+                padding: .5%;
             }
         }
     }

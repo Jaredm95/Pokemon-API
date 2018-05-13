@@ -43,7 +43,7 @@ function searchingForPoke(poke) {
 
 }
 
-/* Search Results Page */
+/* -------- Search Results Page -------- */
 
 // Function for calling the API with the search from the index page
 function initPokemon() {
@@ -88,7 +88,7 @@ function loadingPage(pokeObject) {
 
     // Loop for replacing the dashes in the Pokemon Name with spaces
     for (let y = 0; y < pokeName.length; y++) {
-        pokeName = pokeName.replace("-", " ");// Replace all dashes with spaces
+        pokeName = pokeName.replace("-", " "); // Replace all dashes with spaces
     } // End of loop
 
     title.innerHTML = pokeName; // Displaying the Name of the Pokemon Searched, with the first letter uppercase.
@@ -207,4 +207,68 @@ function gettingMoreInfo(pokemonID) {
 function getYear() {
     let d = new Date();
     document.getElementById("bottom").innerHTML = d.getFullYear();
+}
+
+// Function for Displaying the sections after it is clicked
+function display(section) {
+    
+    // Long if statement that could probably have been simplified but JavaScript is pissing me off and this works
+    
+    if (section == 'stats'){ // If the parameter is stats do this stuff
+        let area = document.getElementById('stats'); // Variable for the area we are changing
+        area.style.display = "block"; // setting the area to display
+        let arrow = document.getElementById('statsArrow'); // Vairable for changing the arrow
+        arrow.setAttribute("onclick", "dontDisplay('stats');"); // Changing the function that the arrow calls with you click it
+        arrow.setAttribute("class", "fas fa-chevron-up"); // Changing the direction of the arrow
+    } else if (section == 'evo') { // If the parameter is evo do this stuff
+        let area = document.getElementById('evo'); // Variable for the area we are changing
+        area.style.display = "block"; // setting the area to display
+        let arrow = document.getElementById('evoArrow'); // Vairable for changing the arrow
+        arrow.setAttribute("onclick", "dontDisplay('evo');"); // Changing the function that the arrow calls with you click it
+        arrow.setAttribute("class", "fas fa-chevron-up"); // Changing the direction of the arrow
+    } else if (section == 'moves'){ // If the parameter is moves do this stuff
+        let area = document.getElementById('moves'); // Variable for the area we are changing
+        area.style.display = "block"; // setting the area to display
+        let arrow = document.getElementById('movesArrow'); // Vairable for changing the arrow
+        arrow.setAttribute("onclick", "dontDisplay('moves');"); // Changing the function that the arrow calls with you click it
+        arrow.setAttribute("class", "fas fa-chevron-up"); // Changing the direction of the arrow
+    } else if (section == 'versions') { // If the parameter is versions do this stuff
+        let area = document.getElementById('versions'); // Variable for the area we are changing
+        area.style.display = "block"; // setting the area to display
+        let arrow = document.getElementById('versionsArrow'); // Vairable for changing the arrow
+        arrow.setAttribute("onclick", "dontDisplay('versions');"); // Changing the function that the arrow calls with you click it
+        arrow.setAttribute("class", "fas fa-chevron-up"); // Changing the direction of the arrow
+    }
+}
+
+// Function for Displaying the sections after it is clicked
+function dontDisplay(section) {
+    
+    // Long if statement that could probably have been simplified but JavaScript is pissing me off and this works
+    
+    if (section == 'stats'){ // If the parameter is stats do this stuff
+        let area = document.getElementById('stats'); // Variable for the area we are changing
+        area.style.display = "none"; // setting the area to not display
+        let arrow = document.getElementById('statsArrow');  // Vairable for changing the arrow
+        arrow.setAttribute("onclick", "display('stats');"); // Changing the function that the arrow calls with you click it
+        arrow.setAttribute("class", "fas fa-chevron-down"); // Changing the direction of the arrow
+    } else if (section == 'evo') { // If the parameter is evo do this stuff
+        let area = document.getElementById('evo'); // Variable for the area we are changing
+        area.style.display = "none"; // setting the area to not display
+        let arrow = document.getElementById('evoArrow');  // Vairable for changing the arrow
+        arrow.setAttribute("onclick", "display('evo');"); // Changing the function that the arrow calls with you click it
+        arrow.setAttribute("class", "fas fa-chevron-down"); // Changing the direction of the arrow
+    } else if (section == 'moves'){ // If the parameter is moves do this stuff
+        let area = document.getElementById('moves'); // Variable for the area we are changing
+        area.style.display = "none"; // setting the area to not display
+        let arrow = document.getElementById('movesArrow');  // Vairable for changing the arrow
+        arrow.setAttribute("onclick", "display('moves');"); // Changing the function that the arrow calls with you click it
+        arrow.setAttribute("class", "fas fa-chevron-down"); // Changing the direction of the arrow
+    } else if (section == 'versions') { // If the parameter is versions do this stuff
+        let area = document.getElementById('versions'); // Variable for the area we are changing
+        area.style.display = "none"; // setting the area to not display
+        let arrow = document.getElementById('versionsArrow');  // Vairable for changing the arrow
+        arrow.setAttribute("onclick", "display('versions');"); // Changing the function that the arrow calls with you click it
+        arrow.setAttribute("class", "fas fa-chevron-down"); // Changing the direction of the arrow
+    }
 }
