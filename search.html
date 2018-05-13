@@ -30,7 +30,7 @@
     <script src="js/script.js" type="text/javascript"></script>
 </head>
 
-<body onload="initPokemon(); getYear();">
+<body onload="initPokemon();">
     <!-- calling the function that calls the API -->
     <!-- Calling function that prints the Year -->
     <header></header>
@@ -49,7 +49,7 @@
         </section>
         <section class="section group">
             <div class="col span_6_of_12">
-                <h3>Base Stats <span onclick="display('stats');" id="statsArrow" class="fas fa-chevron-down"></span></h3>
+                <h3 id="statTitle">Base Stats <span onclick="display('stats');" id="statsArrow" class="fas fa-chevron-down"></span></h3>
                 <ul id="stats" style="display: none;"></ul>
             </div>
             <div class="col span_6_of_12">
@@ -60,11 +60,11 @@
         </section>
         <section class="section group">
             <div class="col span_6_of_12">
-                <h3>Moves <span onclick="display('moves');" id="movesArrow" class="fas fa-chevron-down"></span></h3>
+                <h3 id="moveTitle">Moves <span onclick="display('moves');" id="movesArrow" class="fas fa-chevron-down"></span></h3>
                 <ul id="moves" style="display: none;"></ul>
             </div>
             <div class="col span_6_of_12">
-                <h3>Game Versions <span onclick="display('versions');" id="versionsArrow" class="fas fa-chevron-down"></span></h3>
+                <h3 id="gameTitle">Game Versions <span onclick="display('versions');" id="versionsArrow" class="fas fa-chevron-down"></span></h3>
                 <ul id="versions" style="display: none;"></ul>
             </div>
         </section>
