@@ -37,24 +37,30 @@ function searchingForPoke(poke) {
     }
     if (x < pokeObject.results.length - 1) { // Calling the Search page 
         window.location = "search.html?=" + pokemon;
-    } else { // Displaying the error message
-        document.getElementById('errorMess').innerHTML = "Can't find that Pokemon <br> did you mean:";
-        let firstLetter = pokemon.charAt(0);
-        let suggestionList = document.getElementById('here');
-        for(let i = 0; i < pokeObject.results.length; i++){
-            if(pokeObject.results[i].name.charAt(0) == firstLetter){
-                let pokeSuggest = document.createElement("li");
-                let pokeLink = document.createElement("a");
-                pokeLink.setAttribute("href", "search.html?=" + pokeObject.results[i].name);
-                pokeLink.innerHTML = pokeObject.results[i].name;
-                pokeSuggest.appendChild(pokeLink);
-                suggestionList.appendChild(pokeSuggest);
-            }
+    } else { // Displaying the error message and the suggestion list
+        document.getElementById('errorMess').innerHTML = "Can't find that Pokemon <br> did you mean:"; // Displaying the error message
+        let firstLetter = pokemon.charAt(0); // Variable for the first letter of the search
+        let suggestionList = document.getElementById('here'); // Variable for the suggestion list
+        // Loop for searching the Object for suggestions
+        for (let i = 0; i < pokeObject.results.length; i++) { 
+            if (pokeObject.results[i].name.charAt(0) == firstLetter) { // If the first letter of the Pokemon and the first letter of the search match, then do this stuff
+                let pokeSuggest = document.createElement("li"); // Variable for the list item
+                let pokeLink = document.createElement("a");  // Variable for the anchor tag
+                pokeLink.setAttribute("href", "search.html?=" + pokeObject.results[i].name); // Setting the link to go to the Pokemon
+                pokeLink.innerHTML = pokeObject.results[i].name; // Setting the link to display the pokemon
+                pokeSuggest.appendChild(pokeLink); // Putting the link in the List Item
+                suggestionList.appendChild(pokeSuggest); // Putting the List Item in the List
+            } // End of Loop
         }
     }
 
 }
 
+// Function for removing the error message
+function removingEMessage(){
+    document.getElementById('errorMess').innerHTML = " "; // Setting Error Message to nothing
+    document.getElementById('here').innerHTML = " "; // Setting the suggestion list to nothing
+}
 /* -------- Search Results Page -------- */
 
 // Function for calling the API with the search from the index page
@@ -67,7 +73,7 @@ function initPokemon() {
     console.log(xhr.status); // Logging the status of the request
     let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
     console.log(pokeObject); // Logging the object
-    
+
     getYear(); // Calling the function for displaying the year
     loadingPage(pokeObject); // calling the function that populates the page
 }
