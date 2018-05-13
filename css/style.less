@@ -123,12 +123,29 @@ main {
             }
         }
     }
-    p#here {
+    p#errorMess {
         font-size: 150%;
         text-align: center;
-        color: @color1;
         .gothic;
         margin-top: 1em;
+    }
+    ul#here {
+        text-align: center;
+        li {
+            &:last-of-type{
+                margin-bottom: -70%;
+            }
+            a {
+                text-decoration: none;
+                color: @color1;
+                border-bottom: 1px solid @lightcolor;
+                transition: ease .5s;
+                &:hover {
+                    border-bottom-color: @color1;
+                    transition: ease .5s;
+                }
+            }
+        }
     }
 }
 
@@ -186,12 +203,22 @@ footer {
         #evo,
         #stats,
         #moves,
-        #versions{
+        #versions {
             display: block !important;
         }
-        ul#stats{
-            meter{
+        ul#stats {
+            meter {
                 padding: .5%;
+            }
+        }
+        ul#here {
+            li {
+                margin-left: 0;
+                padding-left: 0;
+                padding-top: .5em;
+                &:last-of-type{
+                    margin-bottom: -15%;
+                }
             }
         }
     }

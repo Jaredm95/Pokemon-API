@@ -123,12 +123,27 @@ main div.form button {
 main div.form button:focus {
   outline: none;
 }
-main p#here {
+main p#errorMess {
   font-size: 150%;
   text-align: center;
-  color: #b72c3d;
   font-family: 'Gothic A1', sans-serif;
   margin-top: 1em;
+}
+main ul#here {
+  text-align: center;
+}
+main ul#here li:last-of-type {
+  margin-bottom: -70%;
+}
+main ul#here li a {
+  text-decoration: none;
+  color: #b72c3d;
+  border-bottom: 1px solid #ffffff;
+  transition: ease .5s;
+}
+main ul#here li a:hover {
+  border-bottom-color: #b72c3d;
+  transition: ease .5s;
 }
 footer {
   background-color: #b72c3d;
@@ -182,6 +197,14 @@ footer.searchPage {
   }
   main ul#stats meter {
     padding: .5%;
+  }
+  main ul#here li {
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: .5em;
+  }
+  main ul#here li:last-of-type {
+    margin-bottom: -15%;
   }
   header {
     height: 400px;

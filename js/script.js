@@ -38,7 +38,19 @@ function searchingForPoke(poke) {
     if (x < pokeObject.results.length - 1) { // Calling the Search page 
         window.location = "search.html?=" + pokemon;
     } else { // Displaying the error message
-        document.getElementById("here").innerHTML = "Search Not found";
+        document.getElementById('errorMess').innerHTML = "Can't find that Pokemon <br> did you mean:";
+        let firstLetter = pokemon.charAt(0);
+        let suggestionList = document.getElementById('here');
+        for(let i = 0; i < pokeObject.results.length; i++){
+            if(pokeObject.results[i].name.charAt(0) == firstLetter){
+                let pokeSuggest = document.createElement("li");
+                let pokeLink = document.createElement("a");
+                pokeLink.setAttribute("href", "search.html?=" + pokeObject.results[i].name);
+                pokeLink.innerHTML = pokeObject.results[i].name;
+                pokeSuggest.appendChild(pokeLink);
+                suggestionList.appendChild(pokeSuggest);
+            }
+        }
     }
 
 }
