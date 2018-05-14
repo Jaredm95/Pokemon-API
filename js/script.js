@@ -42,10 +42,10 @@ function searchingForPoke(poke) {
         let firstLetter = pokemon.charAt(0); // Variable for the first letter of the search
         let suggestionList = document.getElementById('here'); // Variable for the suggestion list
         // Loop for searching the Object for suggestions
-        for (let i = 0; i < pokeObject.results.length; i++) { 
+        for (let i = 0; i < pokeObject.results.length; i++) {
             if (pokeObject.results[i].name.charAt(0) == firstLetter) { // If the first letter of the Pokemon and the first letter of the search match, then do this stuff
                 let pokeSuggest = document.createElement("li"); // Variable for the list item
-                let pokeLink = document.createElement("a");  // Variable for the anchor tag
+                let pokeLink = document.createElement("a"); // Variable for the anchor tag
                 pokeLink.setAttribute("href", "search.html?=" + pokeObject.results[i].name); // Setting the link to go to the Pokemon
                 pokeLink.innerHTML = pokeObject.results[i].name; // Setting the link to display the pokemon
                 pokeSuggest.appendChild(pokeLink); // Putting the link in the List Item
@@ -57,7 +57,7 @@ function searchingForPoke(poke) {
 }
 
 // Function for removing the error message
-function removingEMessage(){
+function removingEMessage() {
     document.getElementById('errorMess').innerHTML = " "; // Setting Error Message to nothing
     document.getElementById('here').innerHTML = " "; // Setting the suggestion list to nothing
 }
@@ -223,29 +223,44 @@ function loadingEvolution(evolution) {
         let evoList = document.getElementById("evo"); // Variable for the Evolutions section
         /* Starting Pokemon */
         let baseState = document.createElement("li"); // Variable for the first List Item
-        baseState.innerHTML = evolution.chain.species.name; // Filling the first List Item with the name of the starting Pokemon
+        let linkOne = document.createElement("a"); // Variable for the first Anchor
+        linkOne.innerHTML = evolution.chain.species.name; // Filling the Anchor text with the starting Pokemon
+        linkOne.setAttribute("href", "search.html?=" + evolution.chain.species.name); // Linking the anchor text with the starting Pokemon
+        baseState.appendChild(linkOne); // Filling the first List Item with the anchor
         evoList.appendChild(baseState); // Displaying the first List Item
         for (let x = 0; x < evolution.chain.evolves_to.length; x++) { // Loop for displaying all the Pokemon it Evolves too
             let evoOne = document.createElement("li"); // Variable for the List Item
-            evoOne.innerHTML = evolution.chain.evolves_to[x].species.name; // Filling the List Item with the evolution of the Pokemon
+            let evoLink = document.createElement("a"); // Vairbale for the Anchor tag
+            evoLink.innerHTML = evolution.chain.evolves_to[x].species.name; // Filling the Anchor Tag  with the evolution of the Pokemon
+            evoLink.setAttribute("href", "search.html?=" + evolution.chain.evolves_to[x].species.name); // Linking the Anchor Tag to the Pokemon
+            evoOne.appendChild(evoLink); // Putting the Pokemon in the List Item
             evoList.appendChild(evoOne); // Displaying the List Item
         } // End of Loop
 
     } else if (evolution.chain.evolves_to.length > 0) { // If the pokemon evolves into one Pokemon then do this stuff
         document.getElementById("evoTitle").style.display = "block"; // Displaying the Evolution Title
         let evoList = document.getElementById("evo"); // Variable for the Evolutions Section
+        let baseStat = document.createElement("li"); // Variable for the First List Item 
+        let linkOne = document.createElement("a"); // Variable for the List Item
         /* Starting Pokemon */
-        let baseState = document.createElement("li"); // Variable for the First List Item 
-        baseState.innerHTML = evolution.chain.species.name; // Filling the first List Item with the name of the starting Pokemon 
-        evoList.appendChild(baseState); // Displaying the first List Item 
+        linkOne.innerHTML = evolution.chain.species.name;
+        linkOne.setAttribute("href", "search.html?=" + evolution.chain.species.name);
+        baseStat.appendChild(linkOne);
+        evoList.appendChild(baseStat); // Displaying the first List Item 
         /* Evolution One */
-        let evoOne = document.createElement("li"); // Variable for the Second List Item
-        evoOne.innerHTML = evolution.chain.evolves_to["0"].species.name; // Filling the Second List Item with the name of the First Evolution of Pokemon
+        let linkTwo = document.createElement("a");
+        let evoOne = document.createElement("li");
+        linkTwo.innerHTML = evolution.chain.evolves_to["0"].species.name; // Filling the Second List Item with the name of the First Evolution of Pokemon
+        linkTwo.setAttribute("href", "search.html?=" + evolution.chain.evolves_to["0"].species.name);
+        evoOne.appendChild(linkTwo);
         evoList.appendChild(evoOne); // Displaying the First Evolution
         /* Evolution Two */
         if (evolution.chain.evolves_to[0].evolves_to.length > 0) { // IF there is an Evolution after the first Evolution then do this stuff
-            let evoTwo = document.createElement("li"); // Variable for the Third List Item
-            evoTwo.innerHTML = evolution.chain.evolves_to["0"].evolves_to["0"].species.name; // Filling the Third List Item with the Name of second Evolution
+            let linkThree = document.createElement("a");
+            let evoTwo = document.createElement("li");
+            linkThree.innerHTML = evolution.chain.evolves_to["0"].evolves_to["0"].species.name; // Filling the Third List Item with the Name of second Evolution
+            linkThree.setAttribute("href", "search.html?=" + evolution.chain.evolves_to["0"].evolves_to["0"].species.name);
+            evoTwo.appendChild(linkThree);
             evoList.appendChild(evoTwo); // Displaying the Second Evolution
             // Shouldn't need another conditional Statement for third Evolutions
         } // End of IF Statment
