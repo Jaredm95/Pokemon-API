@@ -86,10 +86,6 @@ main ul#evo a {
   border-bottom: 1px solid #ffffff;
   transition: ease .8s;
 }
-main ul#evo a:hover {
-  border-bottom: 1px solid #b72c3d;
-  transition: ease .8s;
-}
 main ul#stats li {
   float: left;
   width: 65%;

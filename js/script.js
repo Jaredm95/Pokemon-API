@@ -103,7 +103,7 @@ function loadingPage(pokeObject) {
     loadingStats(pokeObject); // Calling the Function for loading the Stats
 
     /* Evolution */
-    loadingEvolution(evolution); // Calling the Function for loading the Evolution
+    loadingEvolution(evolution, pokemon); // Calling the Function for loading the Evolution
 
     /* Game Versions */
     loadingGames(pokeObject); // Calling the Function for loading the Game Versions
@@ -217,7 +217,8 @@ function loadingStats(pokeObject) {
 }
 
 // Function for loading the Evolution
-function loadingEvolution(evolution) {
+function loadingEvolution(evolution, pokemon) {
+    let pokeColor = pokemon.color.name; 
     if (evolution.chain.evolves_to.length > 1) { // If the Pokemon can evolve to multiple Pokemon then do this stuff
         document.getElementById("evoTitle").style.display = "block"; // Display the Evolution Title
         let evoList = document.getElementById("evo"); // Variable for the Evolutions section
@@ -226,6 +227,7 @@ function loadingEvolution(evolution) {
         let linkOne = document.createElement("a"); // Variable for the first Anchor
         linkOne.innerHTML = evolution.chain.species.name; // Filling the Anchor text with the starting Pokemon
         linkOne.setAttribute("href", "search.html?=" + evolution.chain.species.name); // Linking the anchor text with the starting Pokemon
+        linkOne.style.color = pokeColor;
         baseState.appendChild(linkOne); // Filling the first List Item with the anchor
         evoList.appendChild(baseState); // Displaying the first List Item
         for (let x = 0; x < evolution.chain.evolves_to.length; x++) { // Loop for displaying all the Pokemon it Evolves too
@@ -233,6 +235,7 @@ function loadingEvolution(evolution) {
             let evoLink = document.createElement("a"); // Vairbale for the Anchor tag
             evoLink.innerHTML = evolution.chain.evolves_to[x].species.name; // Filling the Anchor Tag  with the evolution of the Pokemon
             evoLink.setAttribute("href", "search.html?=" + evolution.chain.evolves_to[x].species.name); // Linking the Anchor Tag to the Pokemon
+            evoLink.style.color = pokeColor;
             evoOne.appendChild(evoLink); // Putting the Pokemon in the List Item
             evoList.appendChild(evoOne); // Displaying the List Item
         } // End of Loop
@@ -242,9 +245,11 @@ function loadingEvolution(evolution) {
         let evoList = document.getElementById("evo"); // Variable for the Evolutions Section
         let baseStat = document.createElement("li"); // Variable for the First List Item 
         let linkOne = document.createElement("a"); // Variable for the List Item
+        let pokeColor = pokemon.color.name;
         /* Starting Pokemon */
         linkOne.innerHTML = evolution.chain.species.name;
         linkOne.setAttribute("href", "search.html?=" + evolution.chain.species.name);
+        linkOne.style.color = pokeColor;
         baseStat.appendChild(linkOne);
         evoList.appendChild(baseStat); // Displaying the first List Item 
         /* Evolution One */
@@ -252,6 +257,7 @@ function loadingEvolution(evolution) {
         let evoOne = document.createElement("li");
         linkTwo.innerHTML = evolution.chain.evolves_to["0"].species.name; // Filling the Second List Item with the name of the First Evolution of Pokemon
         linkTwo.setAttribute("href", "search.html?=" + evolution.chain.evolves_to["0"].species.name);
+        linkTwo.style.color = pokeColor;
         evoOne.appendChild(linkTwo);
         evoList.appendChild(evoOne); // Displaying the First Evolution
         /* Evolution Two */
@@ -260,6 +266,7 @@ function loadingEvolution(evolution) {
             let evoTwo = document.createElement("li");
             linkThree.innerHTML = evolution.chain.evolves_to["0"].evolves_to["0"].species.name; // Filling the Third List Item with the Name of second Evolution
             linkThree.setAttribute("href", "search.html?=" + evolution.chain.evolves_to["0"].evolves_to["0"].species.name);
+            linkThree.style.color = pokeColor;
             evoTwo.appendChild(linkThree);
             evoList.appendChild(evoTwo); // Displaying the Second Evolution
             // Shouldn't need another conditional Statement for third Evolutions
@@ -267,7 +274,6 @@ function loadingEvolution(evolution) {
     } else { // End of ELSE IF Statment
         document.getElementById('evoTitle').style.display = "none"; // Making the Evolution Title not display
     } // End of ELSE Statment
-
 }
 
 // Function for loading the Game Versions
