@@ -76,6 +76,16 @@ main {
             list-style-position: inside;
             margin-left: 2.5%;
             transition: ease .9s;
+            a{
+                text-decoration: none;
+                color: @color1;
+                border-bottom: 1px solid @lightcolor;
+                transition: ease .8s;
+                &:hover{
+                    border-bottom: 1px solid @color1;
+                    transition: ease .8s;
+                }
+            }
         }
     }
     ul#stats {
