@@ -206,6 +206,13 @@ footer.searchPage {
   main .fa-chevron-up {
     display: none;
   }
+  main .hidden {
+    height: auto;
+    position: inherit;
+    margin-left: 0 !important;
+    visibility: visible;
+    transition: all .03s;
+  }
   main #evo,
   main #stats,
   main #moves,
