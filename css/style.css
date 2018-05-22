@@ -151,6 +151,17 @@ main ul#here li a:hover {
   border-bottom-color: #b72c3d;
   transition: ease .5s;
 }
+main .hidden {
+  position: absolute;
+  margin-left: -75em !important;
+  visibility: hidden;
+  transition: all .03s;
+}
+main .shown {
+  height: auto;
+  margin-left: 0;
+  transition: all .5s;
+}
 footer {
   background-color: #b72c3d;
   color: #ffffff;

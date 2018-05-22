@@ -80,11 +80,10 @@ main {
                 text-decoration: none;
                 color: @color1;
                 border-bottom: 1px solid @lightcolor;
-                transition: ease .8s;
-//                &:hover {
-//                    border-bottom: 1px solid @color1;
-//                    transition: ease .8s;
-//                }
+                transition: ease .8s; //                &:hover {
+                //                    border-bottom: 1px solid @color1;
+                //                    transition: ease .8s;
+                //                }
             }
         }
     }
@@ -156,6 +155,17 @@ main {
                 }
             }
         }
+    }
+    .hidden {
+        position: absolute;
+        margin-left: -75em !important;
+        visibility: hidden;
+        transition: all .03s;
+    }
+    .shown {
+        height: auto;
+        margin-left: 0;
+        transition: all .5s;
     }
 }
 
