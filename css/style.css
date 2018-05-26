@@ -37,6 +37,9 @@ header h1 {
   padding-top: 5%;
   color: #ffffff;
 }
+header.alt {
+  height: 100px;
+}
 main div.pic {
   text-align: center;
 }
@@ -232,6 +235,10 @@ footer.searchPage {
   }
   header {
     height: 400px;
+  }
+  header.alt {
+    height: 250px;
+    background-position: center center;
   }
   footer {
     margin-top: 25%;
