@@ -69,10 +69,10 @@ main .fa-chevron-down,
 main .fa-chevron-up {
   font-size: 85%;
 }
-main #evo,
-main #stats,
-main #versions,
-main #moves {
+main #evoBox,
+main #statsBox,
+main #versionsBox,
+main #movesBox {
   display: none;
 }
 main ul {
@@ -204,10 +204,10 @@ footer.searchPage {
   main .fa-chevron-up {
     display: none;
   }
-  main #evo,
-  main #stats,
-  main #moves,
-  main #versions {
+  main #evoBox,
+  main #statsBox,
+  main #movesBox,
+  main #versionsBox {
     display: block !important;
     height: auto !important;
   }

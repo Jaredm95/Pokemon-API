@@ -318,14 +318,14 @@ function getYear() {
 
 // Function for Displaying the sections after it is clicked
 function display(section) {
-    $("#" + section).slideDown("slow");
+    $("#" + section + "Box").slideDown("slow");
     document.getElementById(section + "Arrow").setAttribute("class", "fas fa-chevron-up");
     document.getElementById(section + "Title").setAttribute("onclick", "dontDisplay(" + '"' + section + '"' + ");");
 }
 
 // Function for Displaying the sections after it is clicked
 function dontDisplay(section) {
-    $("#" + section).slideUp("slow");
+    $("#" + section + "Box").slideUp("slow");
     document.getElementById(section + "Arrow").setAttribute("class", "fas fa-chevron-down");
     document.getElementById(section + "Title").setAttribute("onclick", "display(" + '"' + section + '"' + ");");
 }
