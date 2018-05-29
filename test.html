@@ -3,23 +3,45 @@
 
 <head>
     <script>
-        let pokemon = document.URL.substring(document.URL.indexOf('=') + 1); // Variable for grabbing the pokemon in the URL after the =
+        function searchOne(search) {
 
-        let xhr = new XMLHttpRequest(); // XML Request
-        xhr.onreadystatechange = function() {
-            if (this.readyState === this.DONE) {
-                console.log(this.status) // do something; the request has completed
+            let xhr = new XMLHttpRequest(); // XML Request
+            xhr.open("GET", search, true); // Requesting all the pokemon in the database
+            xhr.send(); // sending the request
+            xhr.onreadystatechange = function() {
+                if (this.readyState === this.DONE) {
+                    console.log(this.status) // do something; the request has completed
+                    let pokeObject = JSON.parse(xhr.responseText);
+                    console.log(pokeObject);
+                    return pokeObject;
+                }
             }
         }
-        xhr.open("GET", "https://pokeapi.co/api/v2/pokemon-species/620/", false); // Requesting all the pokemon in the database
-        xhr.send(); // sending the request
-        let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
-        console.log(pokeObject); // Logging the object
+
+        function searchTwo(search) {
+            let xhr = new XMLHttpRequest(); // XML Request
+            xhr.open("GET", search, false); // Requesting all the pokemon in the database
+            xhr.send(); // sending the request
+            console.log(xhr.status);
+            let pokeObject = JSON.parse(xhr.responseText);
+            console.log(pokeObject);
+            return pokeObject;
+        }
+
+        function init() {
+            let res1 = searchTwo("https://pokeapi.co/api/v2/pokemon/charmander/");
+            let res2 = searchTwo("https://pokeapi.co/api/v2/pokemon-species/4/");
+            let res3 = searchTwo("https://pokeapi.co/api/v2/evolution-chain/2/");
+            
+            console.log(res1);
+            console.log(res2);
+            console.log(res3);
+        }
 
     </script>
 </head>
 
-<body>
+<body onload="init();">
 </body>
 
 </html>
