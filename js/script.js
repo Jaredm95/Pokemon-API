@@ -318,66 +318,14 @@ function getYear() {
 
 // Function for Displaying the sections after it is clicked
 function display(section) {
-    if (section == 'stats') {
-        let stats = document.getElementById('stats');
-        stats.setAttribute('class', 'shown');
-        let arrow = document.getElementById('statArrow');
-        let title = document.getElementById('statTitle');
-        title.setAttribute('onclick', "dontDisplay('stats');");
-        arrow.setAttribute('class', 'fas fa-chevron-up');
-    } else if (section == 'evo') {
-        let evo = document.getElementById('evo');
-        evo.setAttribute('class', 'shown');
-        let arrow = document.getElementById('evoArrow');
-        let title = document.getElementById('evoTitle');
-        title.setAttribute('onclick', "dontDisplay('evo');");
-        arrow.setAttribute('class', 'fas fa-chevron-up');
-    } else if (section == 'moves') {
-        let stats = document.getElementById('moves');
-        stats.setAttribute('class', 'shown');
-        let arrow = document.getElementById('movesArrow');
-        let title = document.getElementById('moveTitle');
-        title.setAttribute('onclick', "dontDisplay('moves');");
-        arrow.setAttribute('class', 'fas fa-chevron-up');
-    } else if (section == 'versions') {
-        let stats = document.getElementById('versions');
-        stats.setAttribute('class', 'shown');
-        let arrow = document.getElementById('versionsArrow');
-        let title = document.getElementById('gameTitle');
-        title.setAttribute('onclick', "dontDisplay('versions');");
-        arrow.setAttribute('class', 'fas fa-chevron-up');
-    }
+    $("#" + section).slideDown("slow");
+    document.getElementById(section + "Arrow").setAttribute("class", "fas fa-chevron-up");
+    document.getElementById(section + "Title").setAttribute("onclick", "dontDisplay(" + '"' + section + '"' + ");");
 }
 
 // Function for Displaying the sections after it is clicked
 function dontDisplay(section) {
-    if (section == 'stats') {
-        let stats = document.getElementById('stats');
-        stats.setAttribute('class', 'hidden');
-        let arrow = document.getElementById('statArrow');
-        let title = document.getElementById('statTitle');
-        title.setAttribute('onclick', "display('stats');");
-        arrow.setAttribute('class', 'fas fa-chevron-down');
-    } else if (section == 'evo') {
-        let evo = document.getElementById('evo');
-        evo.setAttribute('class', 'hidden');
-        let arrow = document.getElementById('evoArrow');
-        let title = document.getElementById('evoTitle');
-        title.setAttribute('onclick', "display('evo');");
-        arrow.setAttribute('class', 'fas fa-chevron-down');
-    } else if (section == 'moves') {
-        let stats = document.getElementById('moves');
-        stats.setAttribute('class', 'hidden');
-        let arrow = document.getElementById('movesArrow');
-        let title = document.getElementById('moveTitle');
-        title.setAttribute('onclick', "display('moves');");
-        arrow.setAttribute('class', 'fas fa-chevron-down');
-    } else if (section == 'versions') {
-        let stats = document.getElementById('versions');
-        stats.setAttribute('class', 'hidden');
-        let arrow = document.getElementById('versionsArrow');
-        let title = document.getElementById('gameTitle');
-        title.setAttribute('onclick', "display('versions');");
-        arrow.setAttribute('class', 'fas fa-chevron-down');
-    }
+    $("#" + section).slideUp("slow");
+    document.getElementById(section + "Arrow").setAttribute("class", "fas fa-chevron-down");
+    document.getElementById(section + "Title").setAttribute("onclick", "display(" + '"' + section + '"' + ");");
 }

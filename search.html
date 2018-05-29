@@ -25,9 +25,11 @@
     <link href="css/grid.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <title>Pok&#233;dex - Search Results</title>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- JavaScript -->
     <script src="js/script.js" type="text/javascript"></script>
+    <title>Pok&#233;dex - Search Results</title>
 </head>
 
 <body onload="initPokemon();">
@@ -49,23 +51,23 @@
         </section>
         <section class="section group">
             <div class="col span_6_of_12">
-                <h3 id="statTitle" onclick="display('stats');">Base Stats <span id="statArrow" class="fas fa-chevron-down"></span></h3>
-                <ul id="stats" class="hidden"></ul>
+                <h3 id="statsTitle" onclick="display('stats');">Base Stats <span id="statsArrow" class="fas fa-chevron-down"></span></h3>
+                <ul id="stats"></ul>
             </div>
             <div class="col span_6_of_12">
                 <h3 id="evoTitle" onclick="display('evo');">Evolution <span id="evoArrow" class="fas fa-chevron-down"></span></h3>
-                <ul id="evo" class="hidden">
+                <ul id="evo">
                 </ul>
             </div>
         </section>
         <section class="section group">
             <div class="col span_6_of_12">
-                <h3 id="moveTitle" onclick="display('moves');">Moves <span id="movesArrow" class="fas fa-chevron-down"></span></h3>
-                <ul id="moves" class="hidden"></ul>
+                <h3 id="movesTitle" onclick="display('moves');">Moves <span id="movesArrow" class="fas fa-chevron-down"></span></h3>
+                <ul id="moves"></ul>
             </div>
             <div class="col span_6_of_12">
-                <h3 id="gameTitle" onclick="display('versions');">Game Versions <span id="versionsArrow" class="fas fa-chevron-down"></span></h3>
-                <ul id="versions" class="hidden"></ul>
+                <h3 id="versionsTitle" onclick="display('versions');">Game Versions <span id="versionsArrow" class="fas fa-chevron-down"></span></h3>
+                <ul id="versions"></ul>
             </div>
         </section>
     </main>

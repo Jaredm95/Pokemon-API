@@ -68,6 +68,12 @@ main {
     .fa-chevron-up {
         font-size: 85%;
     }
+    #evo,
+    #stats,
+    #versions,
+    #moves{
+        display: none;
+    }
     ul {
         margin-left: 2.5%;
         .roboto;
@@ -160,17 +166,6 @@ main {
             }
         }
     }
-    .hidden {
-        position: absolute;
-        margin-left: -75em !important;
-        visibility: hidden;
-        transition: all .03s;
-    }
-    .shown {
-        height: auto;
-        margin-left: 0;
-        transition: all .5s;
-    }
 }
 
 footer {
@@ -224,18 +219,12 @@ footer {
         .fa-chevron-up {
             display: none;
         }
-        .hidden {
-            height: auto;
-            position: inherit;
-            margin-left: 0 !important;
-            visibility: visible;
-            transition: all .03s;
-        }
         #evo,
         #stats,
         #moves,
         #versions {
             display: block !important;
+            height: auto !important; 
         }
         ul#stats {
             meter {

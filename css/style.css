@@ -69,6 +69,12 @@ main .fa-chevron-down,
 main .fa-chevron-up {
   font-size: 85%;
 }
+main #evo,
+main #stats,
+main #versions,
+main #moves {
+  display: none;
+}
 main ul {
   margin-left: 2.5%;
   font-family: 'Roboto', sans-serif;
@@ -154,17 +160,6 @@ main ul#here li a:hover {
   border-bottom-color: #b72c3d;
   transition: ease .5s;
 }
-main .hidden {
-  position: absolute;
-  margin-left: -75em !important;
-  visibility: hidden;
-  transition: all .03s;
-}
-main .shown {
-  height: auto;
-  margin-left: 0;
-  transition: all .5s;
-}
 footer {
   background-color: #b72c3d;
   color: #ffffff;
@@ -209,18 +204,12 @@ footer.searchPage {
   main .fa-chevron-up {
     display: none;
   }
-  main .hidden {
-    height: auto;
-    position: inherit;
-    margin-left: 0 !important;
-    visibility: visible;
-    transition: all .03s;
-  }
   main #evo,
   main #stats,
   main #moves,
   main #versions {
     display: block !important;
+    height: auto !important;
   }
   main ul#stats meter {
     padding: .5%;
