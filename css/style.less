@@ -135,10 +135,14 @@ main {
             .roboto;
             border: none;
             border-radius: 5px;
-            font-size: 100%;
             width: 10%;
+            span{
+                font-size: 147%;
+                padding-top: 3%;
+            }
             &:focus {
                 outline: none;
+                background-color: darken(lightgrey, 20%);
             }
         }
     }
@@ -198,6 +202,11 @@ footer {
     main {
         div.form {
             padding: 1.5%;
+            button {
+                span {
+                    font-size: 150%;
+                }
+            }
         }
     }
 }

@@ -4,32 +4,31 @@
 function getSearchValue() {
     let value = document.getElementById("search").value; // Getting the value of the search
 
-    searchingForPoke(value); // Calling the function that searchs the API results
+    callingPokemon(value); // Calling the function that searchs the API results
 
 }
 
 // Function for calling the Pokemon API for the inital Search
-function callingPokemon() {
+function callingPokemon(poke) {
     // https://pokeapi.co/ <-- Pokemon api
 
     let xhr = new XMLHttpRequest(); // XML Request
-    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=949", false); // Requesting all the pokemon in the database
+    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=949", true); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
-    console.log(xhr.status); // Logging the status of the request
-    let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
-    console.log(pokeObject); // Logging the object 
-
-    return pokeObject; // returning the JSON results
+    xhr.onreadystatechange = function () {
+        if (this.readyState === this.DONE) {
+            let pokeObject = JSON.parse(xhr.responseText);
+            searchingForPoke(poke, pokeObject);
+        }
+    }
 }
-
 // function for searching for the Pokemon
-function searchingForPoke(poke) {
+function searchingForPoke(poke, pokeObject) {
     // Loop for checking and replacing the spaces of a search with dashes
     for (let i = 0; i < poke.length; i++) {
         poke = poke.replace(" ", "-");
     } // End of loop
     let pokemon = poke.toLowerCase(); // Variable for the Pokemon name that was searched
-    let pokeObject = callingPokemon(); // Calling the Function that calls the Pokemon API
     let x = 0;
     // Loop for searching the results of the API call and comparing them to the search
     while (pokemon != pokeObject.results[x].name && x < pokeObject.results.length - 1) {
@@ -72,7 +71,6 @@ function initPokemon() {
     xhr.send(); // sending the request
     xhr.onreadystatechange = function () {
         if (this.readyState === this.DONE) {
-            console.log(this.status) // do something; the request has completed
             let pokeObject = JSON.parse(xhr.responseText);
             loadingPokemon(pokeObject);
         }
@@ -87,7 +85,7 @@ function loadingPokemon(pokeObject) {
     loadingStats(pokeObject);
     loadingMoveset(pokeObject);
     loadingGames(pokeObject);
-    
+
     let pokemonVersion = pokeObject.species.url; // Variable for the URL of the Pokemon Species
     initGame(pokemonVersion);
 }
@@ -96,7 +94,7 @@ function loadingVersion(pokeObject) {
     loadingDesc(pokeObject);
     let evo = pokeObject.evolution_chain.url;
     initEvo(pokeObject, evo);
-    
+
 }
 // Function for loading the images
 function loadingImages(pokeObject) {
@@ -294,7 +292,6 @@ function initGame(pokemonID) {
     xhr.send(); // sending the request
     xhr.onreadystatechange = function () {
         if (this.readyState === this.DONE) {
-            console.log(this.status) // do something; the request has completed
             let pokeObject = JSON.parse(xhr.responseText);
             loadingVersion(pokeObject);
         }
@@ -307,7 +304,6 @@ function initEvo(object, pokemonID) {
     xhr.send(); // sending the request
     xhr.onreadystatechange = function () {
         if (this.readyState === this.DONE) {
-            console.log(this.status) // do something; the request has completed
             let pokeObject = JSON.parse(xhr.responseText);
             loadingEvolution(pokeObject, object);
         }
