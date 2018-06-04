@@ -68,47 +68,36 @@ function initPokemon() {
     let pokemon = document.URL.substring(document.URL.indexOf('=') + 1); // Variable for grabbing the pokemon in the URL after the =
 
     let xhr = new XMLHttpRequest(); // XML Request
-    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/", false); // Requesting all the pokemon in the database
+    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/", true); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
-    console.log(xhr.status); // Logging the status of the request
-    let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
-    console.log(pokeObject); // Logging the object
-
+    xhr.onreadystatechange = function () {
+        if (this.readyState === this.DONE) {
+            console.log(this.status) // do something; the request has completed
+            let pokeObject = JSON.parse(xhr.responseText);
+            loadingPokemon(pokeObject);
+        }
+    }
     getYear(); // Calling the function for displaying the year
-    loadingPage(pokeObject); // calling the function that populates the page
 }
 
 // Function for populating the page with information on the searched pokemon
-function loadingPage(pokeObject) {
-
+function loadingPokemon(pokeObject) {
+    loadingImages(pokeObject);
+    loadingTitle(pokeObject);
+    loadingStats(pokeObject);
+    loadingMoveset(pokeObject);
+    loadingGames(pokeObject);
+    
     let pokemonVersion = pokeObject.species.url; // Variable for the URL of the Pokemon Species
-    let pokemon = gettingMoreInfo(pokemonVersion); // Calling the Function that Calls the API with the URL for the Pokemon Species
-
-    let pokemonEvo = pokemon.evolution_chain.url; // Variable for the URL of the Pokemon Evolution 
-    let evolution = gettingMoreInfo(pokemonEvo); // Calling the Function that calls the API with the URL for the Pokemon Evolution
-
-    /* Images */
-    loadingImages(pokeObject); // Calling the Function for loading the images
-
-    /* Title */
-    loadingTitle(pokeObject); // Calling the Function for loading the Title
-
-    /* Description */
-    loadingDesc(pokemon); // Calling the Function for loading the description
-
-    /* Moves */
-    loadingMoveset(pokeObject); // Calling the Function for loading the moveset 
-
-    /* Stats */
-    loadingStats(pokeObject); // Calling the Function for loading the Stats
-
-    /* Evolution */
-    loadingEvolution(evolution, pokemon); // Calling the Function for loading the Evolution
-
-    /* Game Versions */
-    loadingGames(pokeObject); // Calling the Function for loading the Game Versions
+    initGame(pokemonVersion);
 }
 
+function loadingVersion(pokeObject) {
+    loadingDesc(pokeObject);
+    let evo = pokeObject.evolution_chain.url;
+    initEvo(pokeObject, evo);
+    
+}
 // Function for loading the images
 function loadingImages(pokeObject) {
     let spriteOne = document.getElementById("spriteOne"); // Variable for the first picture
@@ -299,17 +288,31 @@ function loadingGames(pokeObject) {
 }
 
 // Function for calling the API with new URL's, used fo gathering additional information that isn't in the original JSON object
-function gettingMoreInfo(pokemonID) {
+function initGame(pokemonID) {
     let xhr = new XMLHttpRequest(); // XML Request
-    xhr.open("GET", pokemonID, false); // Requesting all the pokemon in the database
+    xhr.open("GET", pokemonID, true); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
-    console.log(xhr.status); // Logging the status of the request
-    let pokeObject = JSON.parse(xhr.responseText); // Declaring a variable for the JSON object 
-    console.log(pokeObject); // Logging the object
-
-    return pokeObject; // Returning the JSON data
+    xhr.onreadystatechange = function () {
+        if (this.readyState === this.DONE) {
+            console.log(this.status) // do something; the request has completed
+            let pokeObject = JSON.parse(xhr.responseText);
+            loadingVersion(pokeObject);
+        }
+    }
 }
 
+function initEvo(object, pokemonID) {
+    let xhr = new XMLHttpRequest(); // XML Request
+    xhr.open("GET", pokemonID, true); // Requesting all the pokemon in the database
+    xhr.send(); // sending the request
+    xhr.onreadystatechange = function () {
+        if (this.readyState === this.DONE) {
+            console.log(this.status) // do something; the request has completed
+            let pokeObject = JSON.parse(xhr.responseText);
+            loadingEvolution(pokeObject, object);
+        }
+    }
+}
 // Function for setting the date in the footer
 function getYear() {
     let d = new Date();
