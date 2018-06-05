@@ -34,20 +34,27 @@
 </head>
 
 <body onload="getYear();">
+    <!-- HEADER STARTS HERE -->
     <header>
         <h1>Pok&#233;dex</h1>
     </header>
+    <!-- HEADER ENDS HERE -->
+    <!-- MAIN STARTS HERE -->
     <main>
         <section class="section group">
             <div class="form">
                 <input type="text" onclick="removingEMessage();" onchange="getSearchValue();" id="search" placeholder="Search Here...">
                 <button onclick="getSearchValue();"><span class="fas fa-search"></span></button>
             </div>
+            <!-- /.form -->
             <!-- Calling the search function -->
             <p id="errorMess"></p>
             <ul id="here"></ul>
         </section>
+        <!-- /.section group -->
     </main>
+    <!-- MAIN ENDS HERE -->
+    <!-- FOOTER STARTS HERE -->
     <footer>
         <section class="section group">
             <div class="col span_12_of_12">
@@ -57,8 +64,14 @@
                     </a> API
                 </p>
             </div>
-            <div class="col span_12_of_12">Pok&#233;dex created by <a href="https://martinezdesigns.net">Jared Martinez</a> &copy; <span id="bottom"></span> </div>
+            <!-- /.col span_12_of_12 -->
+            <div class="col span_12_of_12">
+                Pok&#233;dex is created by <a href="https://martinezdesigns.net">Jared Martinez</a> &copy; <span id="bottom"></span>
+            </div>
+            <!-- /.col span_12_of_12 -->
         </section>
+        <!-- /.section group -->
     </footer>
+    <!-- FOOTER ENDS HERE -->
 </body>
 </ html>

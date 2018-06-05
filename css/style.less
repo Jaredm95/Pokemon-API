@@ -11,6 +11,7 @@ Date: 5/8/2018
 
 /* mobile styles */
 
+// Body 
 body {
     font-size: 16px;
     font-weight: normal;
@@ -19,6 +20,7 @@ body {
     background-color: @lightcolor;
 }
 
+// Header 
 header {
     background-image: url(../images/header.jpg);
     background-size: cover;
@@ -34,14 +36,17 @@ header {
     }
 }
 
+// Alternate header
 header.alt {
     height: 150px;
 }
 
+// Error Header 
 header.errHeader {
     height: 500px;
 }
 
+// Input Form 
 div.form {
     margin-top: 2em;
     width: 95%;
@@ -78,6 +83,7 @@ div.form {
     }
 }
 
+// Additional Styles for the input form on the results page
 div.second {
     margin-top: 0%;
     width: 100%;
@@ -85,6 +91,7 @@ div.second {
     border-radius: 0;
 }
 
+// Suggestion list 
 ul#here {
     text-align: center;
     li {
@@ -104,6 +111,7 @@ ul#here {
     }
 }
 
+// Additioanl styles for the Suggestion List on the results page
 ul.list {
     width: 50%;
     margin-left: 25%;
@@ -114,6 +122,7 @@ ul.list {
     }
 }
 
+// Error Message
 p#errorMess {
     font-size: 150%;
     text-align: center;
@@ -121,7 +130,9 @@ p#errorMess {
     margin-top: 1em;
 }
 
+// Main
 main {
+    // Pictures
     div.pic {
         text-align: center;
     }
@@ -132,6 +143,7 @@ main {
         padding-bottom: .5em;
         text-transform: capitalize;
     }
+    // Description
     p#desc {
         width: 95%;
         margin-left: 2.5%;
@@ -151,6 +163,7 @@ main {
     .fa-chevron-up {
         font-size: 85%;
     }
+    // Boxes
     #evoBox,
     #statsBox,
     #versionsBox,
@@ -164,6 +177,7 @@ main {
             padding: 2%;
             text-transform: capitalize;
         }
+        // Evolution list
         &#evo {
             list-style-type: decimal;
             list-style-position: inside;
@@ -177,6 +191,7 @@ main {
             }
         }
     }
+    // Stats list
     ul#stats {
         li {
             float: left;
@@ -193,6 +208,7 @@ main {
     }
 }
 
+// Footer
 footer {
     background-color: @color1;
     color: @lightcolor;
@@ -209,6 +225,7 @@ footer {
             border-bottom: 1px @color5 solid;
         }
     }
+    // Alternate footer for the results page
     &.searchPage {
         margin-top: .5em;
     }
@@ -217,15 +234,19 @@ footer {
 /* Tablet Styles */
 
 @media only screen and (min-width: 481px) {
+    // Body
     body {
         font-size: 18px;
     }
+    // Alternate header
     header.alt {
         height: 250px;
     }
+    // Error header
     header.errHeader{
         height: 650px;
     }
+    // Form
     div.form {
         padding: 1.5%;
         button {
@@ -239,6 +260,7 @@ footer {
 /* Desktop Styles */
 
 @media only screen and (min-width: 1025px) {
+    // Form
     div.form {
         margin-left: 2.5%;
         input {
@@ -247,12 +269,14 @@ footer {
         button {
             width: 5%;
         }
-    }
+    } 
+    // Main 
     main {
         .fa-chevron-down,
         .fa-chevron-up {
             display: none;
         }
+        // Boxes
         #evoBox,
         #statsBox,
         #movesBox,
@@ -260,11 +284,13 @@ footer {
             display: block !important;
             height: auto !important;
         }
+        // Stats lists
         ul#stats {
             meter {
                 padding: .5%;
             }
         }
+        // Suggestion List
         ul#here {
             li {
                 margin-left: 0;
@@ -276,19 +302,24 @@ footer {
             }
         }
     }
+    // Header
     header {
         height: 400px;
     }
+    // Alternate Header
     header.alt {
         height: 350px;
         background-position: center center;
     }
+    // Error header
     header.errHeader{
         height: 900px;
     }
+    // Form on the results page
     div.second {
         margin-left: 0;
     }
+    // Footer
     footer {
         margin-top: 25%;
     }

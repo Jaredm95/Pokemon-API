@@ -3,30 +3,29 @@
 // Function for collecting the value of the user search
 function getSearchValue() {
     let value = document.getElementById("search").value; // Getting the value of the search
-    let i;
-    for(i = 0; i < value.length; i++){
-        if(value.charAt(i) != " "){
-            break;
+    let i; // Counter
+    // Loop for making sure the search isn't just space
+    for (i = 0; i < value.length; i++) {
+        if (value.charAt(i) != " " && value.charAt(0) != " ") { // If the character isn't blank, and the starting character isn't blank 
+            break; // Break out of the loop
         }
-    }
-    if(i != value.length ){
-        callingPokemon(value);
-    } else {
-        document.getElementById('errorMess').innerHTML = "Please Enter a valid search";
+    } // End loop
+    if (i != value.length) { // If the counter is not equal to the length of the search
+        callingPokemon(value); // Calling the API
+    } else { // If the counter is the same amount of the search length
+        document.getElementById('errorMess').innerHTML = "Please Enter a valid search"; // Displaying Error Message
     }
 }
-
 // Function for calling the Pokemon API for the inital Search
 function callingPokemon(poke) {
     // https://pokeapi.co/ <-- Pokemon api
-
     let xhr = new XMLHttpRequest(); // XML Request
     xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=949", true); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
-    xhr.onreadystatechange = function () {
-        if (this.readyState === this.DONE) {
-            let pokeObject = JSON.parse(xhr.responseText);
-            searchingForPoke(poke, pokeObject);
+    xhr.onreadystatechange = function () { // When the API ready state changes
+        if (this.readyState === this.DONE) { // The API is done do stuff
+            let pokeObject = JSON.parse(xhr.responseText); // Variable for the JSON 
+            searchingForPoke(poke, pokeObject); // Calling the search function
         }
     }
 }
@@ -64,37 +63,38 @@ function searchingForPoke(poke, pokeObject) {
     }
 
 }
-
 // Function for removing the error message
 function removingEMessage() {
-    $('#here').slideUp("slow");
+    $('#here').slideUp("slow"); // Sliding up the Suggestion list
     document.getElementById('errorMess').innerHTML = " "; // Setting Error Message to nothing
     document.getElementById('here').innerHTML = " "; // Setting the suggestion list to nothing
 }
 /* -------- Search Results Page -------- */
 
+// Function for getting the search on the Results page
 function getSearch() {
     let value = document.getElementById("search").value; // Getting the value of the search
-    let i;
-    for(i = 0; i < value.length; i++){
-        if(value.charAt(i) != " "){
-            break;
+    let i; // Counter
+    // Loop for making sure the value isn't just spaces
+    for (i = 0; i < value.length; i++) {
+        if (value.charAt(i) != " " && value.charAt(0) != " ") { // If the character isn't a space, and the starting character isn't a space
+            break; // Break out of the loop
         }
-    }
-    if(i != value.length ){
-        callingPokemonSearch(value);
-    } else {
-        document.getElementById('errorMess').innerHTML = "Please Enter a valid search";
+    } // End of Loop
+    if (i != value.length) { // If the counter isn't the same amount as the search length
+        callingPokemonSearch(value); // Calling the API
+    } else { // If the counter is as the same amount of the search length
+        document.getElementById('errorMess').innerHTML = "Please Enter a valid search"; // Displaying Error Message
     }
 }
-
+// Function for checking the results of the search on the results page
 function searchingForPokeSearch(poke, pokeObject) {
     // Loop for checking and replacing the spaces of a search with dashes
     for (let i = 0; i < poke.length; i++) {
         poke = poke.replace(" ", "-");
     } // End of loop
     let pokemon = poke.toLowerCase(); // Variable for the Pokemon name that was searched
-    let x = 0;
+    let x = 0; // Counter
     // Loop for searching the results of the API call and comparing them to the search
     while (pokemon != pokeObject.results[x].name && x < pokeObject.results.length - 1) {
         x++; // Add the counter 
@@ -106,8 +106,8 @@ function searchingForPokeSearch(poke, pokeObject) {
         let firstLetter = pokemon.charAt(0); // Variable for the first letter of the search
         let suggestionList = document.getElementById('here'); // Variable for the suggestion list
         suggestionList.innerHTML = " ";
-        let y = 0;
-        document.getElementsByTagName("header")[0].setAttribute("class", "errHeader");
+        let y = 0; // Secondary counter
+        document.getElementsByTagName("header")[0].setAttribute("class", "errHeader"); // Setting the header to the Error header
         // Loop for searching the Object for suggestions
         for (let i = 0; i < pokeObject.results.length; i++) {
             if (pokeObject.results[i].name.charAt(0) == firstLetter) { // If the first letter of the Pokemon and the first letter of the search match, then do this stuff
@@ -117,33 +117,33 @@ function searchingForPokeSearch(poke, pokeObject) {
                 pokeLink.innerHTML = pokeObject.results[i].name; // Setting the link to display the pokemon
                 pokeSuggest.appendChild(pokeLink); // Putting the link in the List Item
                 suggestionList.appendChild(pokeSuggest); // Putting the List Item in the List
-                y++;
-                if (y == 10) {
-                    break;
+                y++; // Add the second counter
+                if (y == 10) { // Check to see if the second counter is 10
+                    break; // Break out of the loop
                 }
             } // End of Loop
         }
-        $("#here").slideDown("slow");
+        $("#here").slideDown("slow"); // Slide the suggestion list is down
     }
 }
-
+// Function for removing the Suggestions on the results page
 function removingList() {
+    // Calling the function that removes the list
     removingEMessage();
-    document.getElementsByTagName("header")[0].setAttribute("class", "alt");
+    document.getElementsByTagName("header")[0].setAttribute("class", "alt"); // Setting the header on the results page to the alt class
 }
-
+// Function for calling the API for the list of all the Pokemon
 function callingPokemonSearch(poke) {
     let xhr = new XMLHttpRequest(); // XML Request
     xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=949", true); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
-    xhr.onreadystatechange = function () {
-        if (this.readyState === this.DONE) {
-            let pokeObject = JSON.parse(xhr.responseText);
-            searchingForPokeSearch(poke, pokeObject);
+    xhr.onreadystatechange = function () { // when the ready state of the call changes do this
+        if (this.readyState === this.DONE) { // If the ready state is done do stuff
+            let pokeObject = JSON.parse(xhr.responseText); // Variable for the JSON
+            searchingForPokeSearch(poke, pokeObject); // Calling the Loading page function
         }
     }
 }
-
 // Function for calling the API with the search from the index page
 function initPokemon() {
     let pokemon = document.URL.substring(document.URL.indexOf('=') + 1); // Variable for grabbing the pokemon in the URL after the =
@@ -151,32 +151,37 @@ function initPokemon() {
     let xhr = new XMLHttpRequest(); // XML Request
     xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/", true); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
-    xhr.onreadystatechange = function () {
-        if (this.readyState === this.DONE) {
-            let pokeObject = JSON.parse(xhr.responseText);
-            loadingPokemon(pokeObject);
+    xhr.onreadystatechange = function () { // when the ready state of the call changes do this
+        if (this.readyState === this.DONE) { // If the ready state is done do stuff
+            let pokeObject = JSON.parse(xhr.responseText); // Variable for the JSON
+            loadingPokemon(pokeObject); // Calling the Loading page function
         }
     }
     getYear(); // Calling the function for displaying the year
 }
-
 // Function for populating the page with information on the searched pokemon
 function loadingPokemon(pokeObject) {
+    // Calling the function that loads the image
     loadingImages(pokeObject);
+    // Calling the function that loads the title
     loadingTitle(pokeObject);
+    // Calling the function that loads the Stats
     loadingStats(pokeObject);
+    // Calling the function that loads the moveset
     loadingMoveset(pokeObject);
+    // Calling the function that loads the games
     loadingGames(pokeObject);
 
     let pokemonVersion = pokeObject.species.url; // Variable for the URL of the Pokemon Species
+    // Calling the function that loads the games
     initGame(pokemonVersion);
 }
-
+// Function for calling the API with the game version
 function loadingVersion(pokeObject) {
+    // Calling the function that loads the description
     loadingDesc(pokeObject);
-    let evo = pokeObject.evolution_chain.url;
-    initEvo(pokeObject, evo);
-
+    let evo = pokeObject.evolution_chain.url; // Variable for the URL for the Evo list
+    initEvo(pokeObject, evo); // Calling the initEvo function 
 }
 // Function for loading the images
 function loadingImages(pokeObject) {
@@ -206,7 +211,6 @@ function loadingImages(pokeObject) {
         spriteFour.style.display = "none"; // Making the image not display
     }
 }
-
 // Function for loading the Title
 function loadingTitle(pokeObject) {
     let title = document.getElementById("title") // Variable for the main title of the page
@@ -224,7 +228,6 @@ function loadingTitle(pokeObject) {
         title.style.display = "none"; // Making the title not display
     }
 }
-
 // Function for loading the description
 function loadingDesc(pokemon) {
     let x; // Variable for the counter
@@ -239,7 +242,6 @@ function loadingDesc(pokemon) {
         document.getElementById("desc").style.display = "none"; // Making the description section not display
     }
 }
-
 // Function for loading the moveset
 function loadingMoveset(pokeObject) {
     if (pokeObject.moves.length != 0) { // If there is moves, do this stuff
@@ -260,7 +262,6 @@ function loadingMoveset(pokeObject) {
         document.getElementById('moveTitle').style.display = "none"; // Making the section not display
     }
 }
-
 // Function for loading the stats of the Pokemon
 function loadingStats(pokeObject) {
     let stats = document.getElementById("stats"); // Variable for the stats section
@@ -284,10 +285,9 @@ function loadingStats(pokeObject) {
     }
 
 }
-
 // Function for loading the Evolution
 function loadingEvolution(evolution, pokemon) {
-    let pokeColor = pokemon.color.name;
+    let pokeColor = pokemon.color.name; // Making the evolution links the color of the pokemon
     if (evolution.chain.evolves_to.length > 1) { // If the Pokemon can evolve to multiple Pokemon then do this stuff
         document.getElementById("evoTitle").style.display = "block"; // Display the Evolution Title
         let evoList = document.getElementById("evo"); // Variable for the Evolutions section
@@ -344,7 +344,6 @@ function loadingEvolution(evolution, pokemon) {
         document.getElementById('evoTitle').style.display = "none"; // Making the Evolution Title not display
     } // End of ELSE Statment
 }
-
 // Function for loading the Game Versions
 function loadingGames(pokeObject) {
     let games = document.getElementById("versions"); // Variable for the Game Versions Section
@@ -363,50 +362,47 @@ function loadingGames(pokeObject) {
             games.appendChild(version); // Displaying the Game Name
         }
     } else { // If they are in 0 games then do this stuff
-        document.getElementById('gameTitle').style.display = "none"; // Making the Title not display
+        document.getElementById('versionsTitle').style.display = "none"; // Making the Title not display
     }
 }
-
-// Function for calling the API with new URL's, used fo gathering additional information that isn't in the original JSON object
+// Function for loading the Games the Pokemon is in
 function initGame(pokemonID) {
     let xhr = new XMLHttpRequest(); // XML Request
     xhr.open("GET", pokemonID, true); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
-    xhr.onreadystatechange = function () {
-        if (this.readyState === this.DONE) {
-            let pokeObject = JSON.parse(xhr.responseText);
-            loadingVersion(pokeObject);
+    xhr.onreadystatechange = function () { // when the ready state of the call changes do this
+        if (this.readyState === this.DONE) { // If the ready state is done do stuff
+            let pokeObject = JSON.parse(xhr.responseText); // Variable for the JSON
+            loadingVersion(pokeObject); // Calling the Loading page function
         }
     }
 }
-
+// Function for loading the Evolution of the Pokemon
 function initEvo(object, pokemonID) {
     let xhr = new XMLHttpRequest(); // XML Request
     xhr.open("GET", pokemonID, true); // Requesting all the pokemon in the database
     xhr.send(); // sending the request
-    xhr.onreadystatechange = function () {
-        if (this.readyState === this.DONE) {
-            let pokeObject = JSON.parse(xhr.responseText);
-            loadingEvolution(pokeObject, object);
+    xhr.onreadystatechange = function () { // when the ready state of the call changes do this
+        if (this.readyState === this.DONE) { // If the ready state is done do stuff
+            let pokeObject = JSON.parse(xhr.responseText); // Variable for the JSON
+            loadingEvolution(pokeObject, object); // Calling the Loading page function
         }
     }
 }
 // Function for setting the date in the footer
 function getYear() {
-    let d = new Date();
-    document.getElementById("bottom").innerHTML = d.getFullYear();
+    let d = new Date(); // Variable for the a Date object
+    document.getElementById("bottom").innerHTML = d.getFullYear(); // Displaying the current year
 }
-
 // Function for Displaying the sections after it is clicked
 function display(section) {
-    $("#" + section + "Box").slideDown("slow");
-    document.getElementById(section + "Arrow").setAttribute("class", "fas fa-chevron-up");
-    document.getElementById(section + "Title").setAttribute("onclick", "dontDisplay(" + '"' + section + '"' + ");");
+    $("#" + section + "Box").slideDown("slow"); // Sliding the box down
+    document.getElementById(section + "Arrow").setAttribute("class", "fas fa-chevron-up"); // setting the arrow to up
+    document.getElementById(section + "Title").setAttribute("onclick", "dontDisplay(" + '"' + section + '"' + ");"); // setting the title to call the dontDisplay function
 }
-
 // Function for Displaying the sections after it is clicked
 function dontDisplay(section) {
-    $("#" + section + "Box").slideUp("slow");
-    document.getElementById(section + "Arrow").setAttribute("class", "fas fa-chevron-down");
-    document.getElementById(section + "Title").setAttribute("onclick", "display(" + '"' + section + '"' + ");");
+    $("#" + section + "Box").slideUp("slow"); // Sliding the box up
+    document.getElementById(section + "Arrow").setAttribute("class", "fas fa-chevron-down"); // setting the arrow to down
+    document.getElementById(section + "Title").setAttribute("onclick", "display(" + '"' + section + '"' + ");"); // Setting the title to call the display function
 }

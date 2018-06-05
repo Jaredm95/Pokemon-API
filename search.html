@@ -34,31 +34,38 @@
 
 <body onload="initPokemon();">
     <!-- calling the function that calls the API -->
-    <!-- Calling function that prints the Year -->
+    <!-- HEADER STARTS HERE -->
     <header class="alt">
-            <section class="section group">
+        <section class="section group">
             <div class="form second">
                 <input type="text" onclick="removingList();" onchange="getSearch();" id="search" placeholder="Search Here...">
                 <button onclick="getSearch();"><span class="fas fa-search"></span></button>
             </div>
+            <!-- /.form -->
             <!-- Calling the search function -->
             <p id="errorMess" style="color: white;"></p>
             <ul id="here" class="list" style="display: none;"></ul>
         </section>
+        <!-- /.section group -->
     </header>
+    <!-- HEADER ENDS HERE -->
+    <!-- MAIN STARTS HERE -->
     <main>
         <section class="section group">
             <div class="col span_12_of_12 pic">
                 <img src="" alt="" id="spriteOne">
                 <img src="" alt="" id="spriteTwo">
             </div>
+            <!-- /.col span_12_of_12 -->
             <div class="col span_12_of_12 pic">
                 <img src="" alt="" id="spriteThree">
                 <img src="" alt="" id="spriteFour">
                 <h1 id="title"></h1>
                 <p id="desc"></p>
             </div>
+            <!-- /.col span_12_of_12 -->
         </section>
+        <!-- /.section group -->
         <section class="section group">
             <div class="col span_6_of_12">
                 <h3 id="statsTitle" onclick="display('stats');">Base Stats <span id="statsArrow" class="fas fa-chevron-down"></span></h3>
@@ -66,6 +73,7 @@
                     <ul id="stats"></ul>
                 </div>
             </div>
+            <!-- /.col span_6_of_12 -->
             <div class="col span_6_of_12">
                 <h3 id="evoTitle" onclick="display('evo');">Evolution <span id="evoArrow" class="fas fa-chevron-down"></span></h3>
                 <div id="evoBox">
@@ -73,7 +81,9 @@
                     </ul>
                 </div>
             </div>
+            <!-- /.col span_6_of_12 -->
         </section>
+        <!-- /.section group -->
         <section class="section group">
             <div class="col span_6_of_12">
                 <h3 id="movesTitle" onclick="display('moves');">Moves <span id="movesArrow" class="fas fa-chevron-down"></span></h3>
@@ -81,14 +91,19 @@
                     <ul id="moves"></ul>
                 </div>
             </div>
+            <!-- /.col span_6_of_12 -->
             <div class="col span_6_of_12">
                 <h3 id="versionsTitle" onclick="display('versions');">Game Versions <span id="versionsArrow" class="fas fa-chevron-down"></span></h3>
                 <div id="versionsBox">
                     <ul id="versions"></ul>
                 </div>
             </div>
+            <!-- /.col span_6_of_12 -->
         </section>
+        <!-- /.section group -->
     </main>
+    <!-- MAIN ENDS HERE -->
+    <!-- FOOTER STARTS HERE -->
     <footer class="searchPage">
         <section class="section group">
             <div class="col span_12_of_12">
@@ -96,9 +111,15 @@
                     <a href="https://pokeapi.co/">pok&#233;api.co</a> API
                 </p>
             </div>
-            <div class="col span_12_of_12">Pok&#233;dex created by <a href="https://martinezdesigns.net">Jared Martinez</a> &copy; <span id="bottom"></span> </div>
+            <!-- /.col span_12_of_12 -->
+            <div class="col span_12_of_12">
+                Pok&#233;dex is created by <a href="https://martinezdesigns.net">Jared Martinez</a> &copy; <span id="bottom"></span>
+            </div>
+            <!-- /.col span_12_of_12 -->
         </section>
+        <!-- /.section group -->
     </footer>
+    <!-- FOOTER ENDS HERE -->
 </body>
 
 </html>
