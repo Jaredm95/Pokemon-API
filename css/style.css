@@ -38,7 +38,82 @@ header h1 {
   color: #ffffff;
 }
 header.alt {
-  height: 100px;
+  height: 150px;
+}
+header.errHeader {
+  height: 500px;
+}
+div.form {
+  margin-top: 2em;
+  width: 95%;
+  margin-left: 2.5%;
+  background-color: #b72c3d;
+  padding: 3%;
+  border-radius: 10px;
+  text-align: center;
+}
+div.form input {
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  border-radius: 5px;
+  width: 85%;
+  font-size: 100%;
+  padding-left: .5%;
+}
+div.form input:focus {
+  outline: none;
+}
+div.form button {
+  background-color: lightgrey;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  border-radius: 5px;
+  width: 10%;
+}
+div.form button span {
+  font-size: 147%;
+  padding-top: 3%;
+}
+div.form button:focus {
+  outline: none;
+  background-color: #a0a0a0;
+}
+div.second {
+  margin-top: 0%;
+  width: 100%;
+  margin-left: 0;
+  border-radius: 0;
+}
+ul#here {
+  text-align: center;
+}
+ul#here li:last-of-type {
+  margin-bottom: -70%;
+}
+ul#here li a {
+  text-decoration: none;
+  color: #b72c3d;
+  border-bottom: 1px solid #ffffff;
+  transition: ease .5s;
+}
+ul#here li a:hover {
+  border-bottom-color: #b72c3d;
+  transition: ease .5s;
+}
+ul.list {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 1em;
+}
+ul.list li {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2%;
+}
+p#errorMess {
+  font-size: 150%;
+  text-align: center;
+  font-family: 'Gothic A1', sans-serif;
+  margin-top: 1em;
 }
 main div.pic {
   text-align: center;
@@ -107,63 +182,6 @@ main ul#stats meter {
 main ul#stats meter:nth-of-type(1) {
   margin-top: 1%;
 }
-main div.form {
-  margin-top: 2em;
-  width: 95%;
-  margin-left: 2.5%;
-  background-color: #b72c3d;
-  padding: 3%;
-  border-radius: 10px;
-  text-align: center;
-}
-main div.form input {
-  font-family: 'Roboto', sans-serif;
-  border: none;
-  border-radius: 5px;
-  width: 85%;
-  font-size: 100%;
-  padding-left: .5%;
-}
-main div.form input:focus {
-  outline: none;
-}
-main div.form button {
-  background-color: lightgrey;
-  font-family: 'Roboto', sans-serif;
-  border: none;
-  border-radius: 5px;
-  width: 10%;
-}
-main div.form button span {
-  font-size: 147%;
-  padding-top: 3%;
-}
-main div.form button:focus {
-  outline: none;
-  background-color: #a0a0a0;
-}
-main p#errorMess {
-  font-size: 150%;
-  text-align: center;
-  font-family: 'Gothic A1', sans-serif;
-  margin-top: 1em;
-}
-main ul#here {
-  text-align: center;
-}
-main ul#here li:last-of-type {
-  margin-bottom: -70%;
-}
-main ul#here li a {
-  text-decoration: none;
-  color: #b72c3d;
-  border-bottom: 1px solid #ffffff;
-  transition: ease .5s;
-}
-main ul#here li a:hover {
-  border-bottom-color: #b72c3d;
-  transition: ease .5s;
-}
 footer {
   background-color: #b72c3d;
   color: #ffffff;
@@ -189,22 +207,28 @@ footer.searchPage {
   body {
     font-size: 18px;
   }
-  main div.form {
+  header.alt {
+    height: 250px;
+  }
+  header.errHeader {
+    height: 650px;
+  }
+  div.form {
     padding: 1.5%;
   }
-  main div.form button span {
+  div.form button span {
     font-size: 150%;
   }
 }
 /* Desktop Styles */
 @media only screen and (min-width: 1025px) {
-  main div.form {
+  div.form {
     margin-left: 2.5%;
   }
-  main div.form input {
+  div.form input {
     width: 90%;
   }
-  main div.form button {
+  div.form button {
     width: 5%;
   }
   main .fa-chevron-down,
@@ -233,8 +257,14 @@ footer.searchPage {
     height: 400px;
   }
   header.alt {
-    height: 250px;
+    height: 350px;
     background-position: center center;
+  }
+  header.errHeader {
+    height: 900px;
+  }
+  div.second {
+    margin-left: 0;
   }
   footer {
     margin-top: 25%;

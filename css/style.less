@@ -35,7 +35,90 @@ header {
 }
 
 header.alt {
-    height: 100px;
+    height: 150px;
+}
+
+header.errHeader {
+    height: 500px;
+}
+
+div.form {
+    margin-top: 2em;
+    width: 95%;
+    margin-left: 2.5%;
+    background-color: @color1;
+    padding: 3%;
+    border-radius: 10px;
+    text-align: center;
+    input {
+        .roboto;
+        border: none;
+        border-radius: 5px;
+        width: 85%;
+        font-size: 100%;
+        padding-left: .5%;
+        &:focus {
+            outline: none;
+        }
+    }
+    button {
+        background-color: lightgrey;
+        .roboto;
+        border: none;
+        border-radius: 5px;
+        width: 10%;
+        span {
+            font-size: 147%;
+            padding-top: 3%;
+        }
+        &:focus {
+            outline: none;
+            background-color: darken(lightgrey, 20%);
+        }
+    }
+}
+
+div.second {
+    margin-top: 0%;
+    width: 100%;
+    margin-left: 0;
+    border-radius: 0;
+}
+
+ul#here {
+    text-align: center;
+    li {
+        &:last-of-type {
+            margin-bottom: -70%;
+        }
+        a {
+            text-decoration: none;
+            color: @color1;
+            border-bottom: 1px solid @lightcolor;
+            transition: ease .5s;
+            &:hover {
+                border-bottom-color: @color1;
+                transition: ease .5s;
+            }
+        }
+    }
+}
+
+ul.list {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 1em;
+    li {
+        background-color: fade(@lightcolor, 90%);
+        padding: 2%;
+    }
+}
+
+p#errorMess {
+    font-size: 150%;
+    text-align: center;
+    .gothic;
+    margin-top: 1em;
 }
 
 main {
@@ -71,7 +154,7 @@ main {
     #evoBox,
     #statsBox,
     #versionsBox,
-    #movesBox{
+    #movesBox {
         display: none;
     }
     ul {
@@ -90,10 +173,7 @@ main {
                 text-decoration: none;
                 color: @color1;
                 border-bottom: 1px solid @lightcolor;
-                transition: ease .8s; //                &:hover {
-                //                    border-bottom: 1px solid @color1;
-                //                    transition: ease .8s;
-                //                }
+                transition: ease .8s;
             }
         }
     }
@@ -108,65 +188,6 @@ main {
             width: 30%;
             &:nth-of-type(1) {
                 margin-top: 1%;
-            }
-        }
-    }
-    div.form {
-        margin-top: 2em;
-        width: 95%;
-        margin-left: 2.5%;
-        background-color: @color1;
-        padding: 3%;
-        border-radius: 10px;
-        text-align: center;
-        input {
-            .roboto;
-            border: none;
-            border-radius: 5px;
-            width: 85%;
-            font-size: 100%;
-            padding-left: .5%;
-            &:focus {
-                outline: none;
-            }
-        }
-        button {
-            background-color: lightgrey;
-            .roboto;
-            border: none;
-            border-radius: 5px;
-            width: 10%;
-            span{
-                font-size: 147%;
-                padding-top: 3%;
-            }
-            &:focus {
-                outline: none;
-                background-color: darken(lightgrey, 20%);
-            }
-        }
-    }
-    p#errorMess {
-        font-size: 150%;
-        text-align: center;
-        .gothic;
-        margin-top: 1em;
-    }
-    ul#here {
-        text-align: center;
-        li {
-            &:last-of-type {
-                margin-bottom: -70%;
-            }
-            a {
-                text-decoration: none;
-                color: @color1;
-                border-bottom: 1px solid @lightcolor;
-                transition: ease .5s;
-                &:hover {
-                    border-bottom-color: @color1;
-                    transition: ease .5s;
-                }
             }
         }
     }
@@ -199,13 +220,17 @@ footer {
     body {
         font-size: 18px;
     }
-    main {
-        div.form {
-            padding: 1.5%;
-            button {
-                span {
-                    font-size: 150%;
-                }
+    header.alt {
+        height: 250px;
+    }
+    header.errHeader{
+        height: 650px;
+    }
+    div.form {
+        padding: 1.5%;
+        button {
+            span {
+                font-size: 150%;
             }
         }
     }
@@ -214,16 +239,16 @@ footer {
 /* Desktop Styles */
 
 @media only screen and (min-width: 1025px) {
-    main {
-        div.form {
-            margin-left: 2.5%;
-            input {
-                width: 90%;
-            }
-            button {
-                width: 5%;
-            }
+    div.form {
+        margin-left: 2.5%;
+        input {
+            width: 90%;
         }
+        button {
+            width: 5%;
+        }
+    }
+    main {
         .fa-chevron-down,
         .fa-chevron-up {
             display: none;
@@ -233,7 +258,7 @@ footer {
         #movesBox,
         #versionsBox {
             display: block !important;
-            height: auto !important; 
+            height: auto !important;
         }
         ul#stats {
             meter {
@@ -255,8 +280,14 @@ footer {
         height: 400px;
     }
     header.alt {
-        height: 250px;
+        height: 350px;
         background-position: center center;
+    }
+    header.errHeader{
+        height: 900px;
+    }
+    div.second {
+        margin-left: 0;
     }
     footer {
         margin-top: 25%;

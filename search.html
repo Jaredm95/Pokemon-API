@@ -35,7 +35,17 @@
 <body onload="initPokemon();">
     <!-- calling the function that calls the API -->
     <!-- Calling function that prints the Year -->
-    <header class="alt"></header>
+    <header class="alt">
+            <section class="section group">
+            <div class="form second">
+                <input type="text" onclick="removingList();" onchange="getSearch();" id="search" placeholder="Search Here...">
+                <button onclick="getSearchValue();"><span class="fas fa-search"></span></button>
+            </div>
+            <!-- Calling the search function -->
+            <p id="errorMess" style="color: white;"></p>
+            <ul id="here" class="list" style="display: none;"></ul>
+        </section>
+    </header>
     <main>
         <section class="section group">
             <div class="col span_12_of_12 pic">

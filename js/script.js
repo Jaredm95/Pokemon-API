@@ -3,9 +3,17 @@
 // Function for collecting the value of the user search
 function getSearchValue() {
     let value = document.getElementById("search").value; // Getting the value of the search
-
-    callingPokemon(value); // Calling the function that searchs the API results
-
+    let i;
+    for(i = 0; i < value.length; i++){
+        if(value.charAt(i) != " "){
+            break;
+        }
+    }
+    if(i != value.length ){
+        callingPokemon(value);
+    } else {
+        document.getElementById('errorMess').innerHTML = "Please Enter a valid search";
+    }
 }
 
 // Function for calling the Pokemon API for the inital Search
@@ -40,6 +48,7 @@ function searchingForPoke(poke, pokeObject) {
         document.getElementById('errorMess').innerHTML = "Can't find that Pokemon <br> did you mean:"; // Displaying the error message
         let firstLetter = pokemon.charAt(0); // Variable for the first letter of the search
         let suggestionList = document.getElementById('here'); // Variable for the suggestion list
+        suggestionList.innerHTML = " ";
         // Loop for searching the Object for suggestions
         for (let i = 0; i < pokeObject.results.length; i++) {
             if (pokeObject.results[i].name.charAt(0) == firstLetter) { // If the first letter of the Pokemon and the first letter of the search match, then do this stuff
@@ -51,16 +60,89 @@ function searchingForPoke(poke, pokeObject) {
                 suggestionList.appendChild(pokeSuggest); // Putting the List Item in the List
             } // End of Loop
         }
+        $('#here').slideDown("slow");
     }
 
 }
 
 // Function for removing the error message
 function removingEMessage() {
+    $('#here').slideUp("slow");
     document.getElementById('errorMess').innerHTML = " "; // Setting Error Message to nothing
     document.getElementById('here').innerHTML = " "; // Setting the suggestion list to nothing
 }
 /* -------- Search Results Page -------- */
+
+function getSearch() {
+    let value = document.getElementById("search").value; // Getting the value of the search
+    let i;
+    for(i = 0; i < value.length; i++){
+        if(value.charAt(i) != " "){
+            break;
+        }
+    }
+    if(i != value.length ){
+        callingPokemonSearch(value);
+    } else {
+        document.getElementById('errorMess').innerHTML = "Please Enter a valid search";
+    }
+}
+
+function searchingForPokeSearch(poke, pokeObject) {
+    // Loop for checking and replacing the spaces of a search with dashes
+    for (let i = 0; i < poke.length; i++) {
+        poke = poke.replace(" ", "-");
+    } // End of loop
+    let pokemon = poke.toLowerCase(); // Variable for the Pokemon name that was searched
+    let x = 0;
+    // Loop for searching the results of the API call and comparing them to the search
+    while (pokemon != pokeObject.results[x].name && x < pokeObject.results.length - 1) {
+        x++; // Add the counter 
+    }
+    if (x < pokeObject.results.length - 1) { // Calling the Search page 
+        window.location = "search.html?=" + pokemon;
+    } else { // Displaying the error message and the suggestion list
+        document.getElementById('errorMess').innerHTML = "Can't find that Pokemon <br> did you mean:"; // Displaying the error message
+        let firstLetter = pokemon.charAt(0); // Variable for the first letter of the search
+        let suggestionList = document.getElementById('here'); // Variable for the suggestion list
+        suggestionList.innerHTML = " ";
+        let y = 0;
+        document.getElementsByTagName("header")[0].setAttribute("class", "errHeader");
+        // Loop for searching the Object for suggestions
+        for (let i = 0; i < pokeObject.results.length; i++) {
+            if (pokeObject.results[i].name.charAt(0) == firstLetter) { // If the first letter of the Pokemon and the first letter of the search match, then do this stuff
+                let pokeSuggest = document.createElement("li"); // Variable for the list item
+                let pokeLink = document.createElement("a"); // Variable for the anchor tag
+                pokeLink.setAttribute("href", "search.html?=" + pokeObject.results[i].name); // Setting the link to go to the Pokemon
+                pokeLink.innerHTML = pokeObject.results[i].name; // Setting the link to display the pokemon
+                pokeSuggest.appendChild(pokeLink); // Putting the link in the List Item
+                suggestionList.appendChild(pokeSuggest); // Putting the List Item in the List
+                y++;
+                if (y == 10) {
+                    break;
+                }
+            } // End of Loop
+        }
+        $("#here").slideDown("slow");
+    }
+}
+
+function removingList() {
+    removingEMessage();
+    document.getElementsByTagName("header")[0].setAttribute("class", "alt");
+}
+
+function callingPokemonSearch(poke) {
+    let xhr = new XMLHttpRequest(); // XML Request
+    xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/?limit=949", true); // Requesting all the pokemon in the database
+    xhr.send(); // sending the request
+    xhr.onreadystatechange = function () {
+        if (this.readyState === this.DONE) {
+            let pokeObject = JSON.parse(xhr.responseText);
+            searchingForPokeSearch(poke, pokeObject);
+        }
+    }
+}
 
 // Function for calling the API with the search from the index page
 function initPokemon() {
