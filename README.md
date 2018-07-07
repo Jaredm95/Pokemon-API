@@ -1,4 +1,4 @@
-# Pokemon-API
+# Pokedex
 
 Pokedex Web Application using the -> https://pokeapi.co/ API.
 
