@@ -14,9 +14,7 @@
 }
 
 // Parametric Mixin for Border Radius and Background Color
-.borderRadiusandbgColor(@paramRadius: 5px;
-@paramBackgroundcolor: #AAA;
-) {
+.borderRadiusandbgColor(@paramRadius: 5px; @paramBackgroundcolor: #AAA;) {
     -moz-border-radius: @paramRadius;
     -ms-border-radius: @paramRadius;
     -o-border-radius: @paramRadius;
@@ -26,21 +24,14 @@
 }
 
 // Parametric Mixin for Drop Shadow 
-.dropShadow(@paramX: 2px;
-@paramY: 2px;
-@paramBlur: 5px;
-@paramColor: #AAA;
-) {
+.dropShadow(@paramX: 2px; @paramY: 2px; @paramBlur: 5px; @paramColor: #AAA;){
     -webkit-box-shadow: @paramX @paramY @paramBlur @paramColor;
     -moz-box-shadow: @paramX @paramY @paramBlur @paramColor;
     box-shadow: @paramX @paramY @paramBlur @paramColor;
 }
 
 // Parametric Mixin for Linear Gradient
-.linearGradient(@paramDirection: left;
-@paramColor1: #CCC;
-@paramColor2: #AAA;
-) {
+.linearGradient(@paramDirection: left; @paramColor1: #CCC; @paramColor2: #AAA;){
     background: @paramColor1;
     background: -o-linear-gradient(@paramDirection, @paramColor1, @paramColor2);
     background: -moz-linear-gradient(@paramDirection, @paramColor1, @paramColor2);
@@ -48,8 +39,7 @@
 }
 
 // Parametric Mixin for Transparency 
-.transparent(@ParamTrans: .5;
-) {
+.transparent(@ParamTrans: .5;) {
     opacity: @ParamTrans;
 }
 
@@ -61,13 +51,4 @@
 
 .imageFlip() {
     transform: scaleX(-1);
-}
-
-// Project Mixins
-.gothic() {
-    font-family: 'Gothic A1', sans-serif;
-}
-
-.roboto() {
-    font-family: 'Roboto', sans-serif;
 }

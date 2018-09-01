@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Jared Martinez">
-    <meta name="description" content="Pokedex using the PokeApi from -> https://pokeapi.co/">
-    <link rel="icon" href="images/favicon.png" sizes="16x16" type="image/png">
+    <meta name="description" content="Pokesearch, a pokedex web application made by web developer Jared Martinez.">
+
     <!-- HTML Shiv -->
 
     <!--[if lt IE 9]>
@@ -16,73 +15,47 @@
     <!-- Mobile Stuff -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Font Stuff -->
-    <link href="https://fonts.googleapis.com/css?family=Gothic+A1%7CRoboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <!-- Font -->
 
-    <!-- CSS Stuff -->
+    <!-- CSS -->
     <link href="css/reset.css" rel="stylesheet">
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/grid.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- JavaScript -->
-    <script src="js/script.js" type="text/javascript"></script>
-    <title>Pok&#233;dex - Search Now</title>
-</head>
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-<body onload="getYear();">
-    <!-- HEADER STARTS HERE -->
-    <header>
-        <h1>Pok&#233;dex</h1>
+    <!-- TITLE -->
+    <title>Pokesearch</title>
+</head>
+<body>
+    <!-- Start pokeApp -->
+    <div id="pokeApp">
+        
+    <!-- HEADER STARTS HERE-->
+    <header> 
+        <h1>PokeSearch</h1>
     </header>
     <!-- HEADER ENDS HERE -->
+
     <!-- MAIN STARTS HERE -->
     <main>
-        <section class="section group">
-            <div class="form">
-                <input type="text" onclick="removingEMessage();" onchange="getSearchValue();" id="search" placeholder="Search Here...">
-                <button onclick="getSearchValue();"><span class="fas fa-search"></span></button>
-            </div>
-            <!-- /.form -->
-            <!-- Calling the search function -->
-            <p id="errorMess"></p>
-            <ul id="here"></ul>
-        </section>
-        <!-- /.section group -->
+        <input type='text' v-model='pSearch'>
+        <button v-model='pSubmit'>Search</button>
     </main>
     <!-- MAIN ENDS HERE -->
+
     <!-- FOOTER STARTS HERE -->
     <footer>
-        <section class="section group">
-            <div class="col span_12_of_12">
-                <p>Pok&#233;dex uses The
-                    <a href="https://pokeapi.co/">
-                        pok&#233;api.co
-                    </a> API
-                </p>
-            </div>
-            <!-- /.col span_12_of_12 -->
-            <div class="col span_12_of_12">
-                Pok&#233;dex is created by <a href="https://martinezdesigns.net">Jared Martinez</a> &copy; <span id="bottom"></span>
-            </div>
-            <!-- /.col span_12_of_12 -->
-        </section>
-        <!-- /.section group -->
+        <p>Pokesearch is made with Vue JS, and utilizes the poke.co API</p>
+        <h2>Made by Jared Martinez</h2>
     </footer>
     <!-- FOOTER ENDS HERE -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119888694-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-119888694-1');
-    </script>
+    </div>
+    <!-- End pokeApp -->
+    <!-- JavaScript Links -->
+    <script src="js/script.js"></script>
 </body>
-</ html>
+</html>

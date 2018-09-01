@@ -10,6 +10,7 @@
 .col {
     display: block;
     float: left;
+    margin: 1% 0 1% 1%;
 }
 
 .span_1_of_12, .span_2_of_12, .span_3_of_12, .span_4_of_12, .span_5_of_12, 
