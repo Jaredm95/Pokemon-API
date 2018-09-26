@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Jared Martinez">
@@ -23,39 +24,42 @@
     <link href="css/grid.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- Vue JS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
     <!-- TITLE -->
     <title>Pokesearch</title>
 </head>
+
 <body>
     <!-- Start pokeApp -->
     <div id="pokeApp">
-        
-    <!-- HEADER STARTS HERE-->
-    <header> 
-        <h1>PokeSearch</h1>
-    </header>
-    <!-- HEADER ENDS HERE -->
 
-    <!-- MAIN STARTS HERE -->
-    <main>
-        <input type='text' v-model='pSearch'>
-        <button>Search</button>
-    </main>
-    <!-- MAIN ENDS HERE -->
+        <!-- HEADER STARTS HERE-->
+        <header>
+            <h1>PokeSearch</h1>
+        </header>
+        <!-- HEADER ENDS HERE -->
 
-    <!-- FOOTER STARTS HERE -->
-    <footer>
-        <p>Pokesearch is made with Vue JS, and utilizes the poke.co API</p>
-        <h2>Made by Jared Martinez</h2>
-    </footer>
-    <!-- FOOTER ENDS HERE -->
+        <!-- MAIN STARTS HERE -->
+        <main>
+            <input type='text' v-model='pSearch'>
+            <button>Search</button>
+        </main>
+        <!-- MAIN ENDS HERE -->
+
+        <!-- FOOTER STARTS HERE -->
+        <footer>
+            <p>Pokesearch is made with Vue JS, and utilizes the poke.co API</p>
+            <h2>Made by Jared Martinez</h2>
+        </footer>
+        <!-- FOOTER ENDS HERE -->
 
     </div>
     <!-- End pokeApp -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- JavaScript Links -->
     <script src="js/script.js"></script>
 </body>
+
 </html>
