@@ -1,14 +1,84 @@
 <!doctype html>
 <html>
+
 <head>
-<script>
-    function haha(){
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/', true);
-        xhr.onreadystatechange = function(){
-            if(xhr.status === 'DONE');
+    <script>
+        function haha() {
+            /* XML Request */
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/", true);
+            xhr.send(); // sending the request
+            xhr.onreadystatechange = function () {
+                if (this.readyState === this.DONE) {
+                    pokeObject = JSON.parse(xhr.responseText);
+                    recursive(pokeObject);
+                }
+            }
         }
-    }
-</script>
-<head>
+
+        function recursive(stuff) {
+            for (let i = 0; i < stuff.results.length; i++) {
+                callingAPI(stuff.results[i].url);
+            }
+
+            function callingAPI(otherStuff) {
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", otherStuff, true);
+                xhr.send(); // sending the request
+                xhr.onreadystatechange = function () {
+                    if (this.readyState === this.DONE) {
+                        pokeObject = JSON.parse(xhr.responseText);
+                        // console.log(pokeObject);
+                        findUrl(pokeObject);
+                    }
+                }
+            }
+
+            function findUrl(oneMoreThing){
+                console.log(oneMoreThing);
+
+                // Grabing Abilities
+                for(let i = 0; i < oneMoreThing.abilities.length; i++){
+                    // console.log('working');
+                    console.log(oneMoreThing.abilities[i].ability.url);
+                }
+
+                // Grabing Forms
+                for(let i = 0; i < oneMoreThing.forms.length; i++){
+                    console.log(oneMoreThing.forms[i].url);
+                } 
+                
+                // Grabbing Games
+                for(let i = 0; i < oneMoreThing.game_indices.length; i++){
+                    console.log(oneMoreThing.game_indices[i].version.url);
+                }
+
+                // Held Items
+                for(let i = 0; i < oneMoreThing.held_items.length; i++){
+                    console.log(oneMoreThing.held_items[i].item.url);
+                }
+
+                // Moves
+                for(let i = 0; i < oneMoreThing.moves.length; i++){
+                    console.log(oneMoreThing.moves[i].move.url);
+                }
+                
+                // Location
+                console.log(oneMoreThing.location_area_encounters);
+                
+                // Species 
+                console.log(oneMoreThing.species.url);
+
+                // Stats 
+                for(let i = 0; i < oneMoreThing.stats.length; i++){
+                    console.log(oneMoreThing.stats[i].stat.url);
+                }
+
+
+            }
+        }
+    </script>
+
+    <head>
+
 </html>
