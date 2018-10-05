@@ -16,7 +16,7 @@ $(() => {
     data.currentYear = new Date().getFullYear();
     data.search = ''; 
     data.pokemon = '';
-    data.placeHolder = '';
+    data.callType = '';
 
     /* Functions */
 
@@ -24,46 +24,71 @@ $(() => {
     const methods = {}
 
     // Function for checking user search
+
+    // Function for gathering all of the pokemon
+    methods.getPokemon = () => {
+        $.getJSON('https://pokeapi.co/api/v2/pokemon/', (response) => {
+                data.pokemon = response; 
+        });
+    }
+
+    // Function for when a user searches
     methods.userSearch = () => {
         (data.search.length != 0)? methods.findSearch(): methods.badSearch();
     }
 
+    // Functions for validating a user search
     methods.findSearch = () => {
         for(let i = 0; i < data.pokemon.results.length; i++){
             if(data.search == data.pokemon.results[i].name){
-                methods.foundPokemon(data.pokemon.results[i].url);
+                data.callType = 'pokemon';
+                methods.apiCall(data.pokemon.results[i].url);
                 break;
             } 
         }
     }
 
-    methods.getPokemon = () => {
-        $.getJSON('https://pokeapi.co/api/v2/pokemon/', (response) => {
-            data.pokemon = response; 
-        });
-    }
-
+    // Function for making an async API call
     methods.apiCall = (url) => {
-        console.log(url);
         $.getJSON(url, (res)  => {
-            console.log(res);
-            data.placeHolder = res;
+            methods.populatePage(res);
         });
     }
 
-    methods.foundPokemon = (url) => {
-        console.log(url);
-        methods.apiCall(url);
-        while(data.placeHolder == ''){
-            console.log('hello');
+    // Function for assigning the Object to the proper functions D:
+    methods.populatePage = (stuff) => {
+        switch(data.callType){
+            case 'pokemon':
+                methods.firstCallInfo(stuff);
+                break;
+            case 'species':
+                methods.secondCallInfo(stuff);
+                break;
+            case 'evo':
+                methods.evolution(stuff);
+                break;
+            case 'moves':
+                console.log(stuff);
         }
-        methods.populatePage();
     }
 
-    methods.populatePage = () => {
-        console.log(data.pokemon);
+    // Function for showing the data of the first API call of a search
+    methods.firstCallInfo = (stuff) => {
+        console.log(stuff);
+        data.callType = 'species';
+        methods.apiCall(stuff.species.url);
     }
 
+    // Function for showing the data of the second API call of a search
+    methods.secondCallInfo = (stuff) => {
+        console.log(stuff);
+        data.callType = 'evo';
+        methods.apiCall(stuff.evolution_chain.url);
+    }
+
+    methods.evolution = (stuff) => {
+        console.log(stuff);
+    }
     /* Components */
 
     // Object for components
