@@ -5,30 +5,27 @@ Project: Pokemon API Vue JS
 Date: 9/1/2018
 */
 
-// Event listener for Content loaded
+// Event listener
 $(() => {
-    /* Vue App */
-
     /* Variables */
 
     // Object for variables
     const data = {}
     data.currentYear = new Date().getFullYear();
     data.search = ''; 
-    data.pokemon = '';
+    data.results = '';
     data.callType = '';
+    data.searchType = '';
 
     /* Functions */
 
     // Object for functions
     const methods = {}
 
-    // Function for checking user search
-
     // Function for gathering all of the pokemon
     methods.getPokemon = () => {
         $.getJSON('https://pokeapi.co/api/v2/pokemon/', (response) => {
-                data.pokemon = response; 
+                data.results = response; 
         });
     }
 
@@ -39,10 +36,10 @@ $(() => {
 
     // Functions for validating a user search
     methods.findSearch = () => {
-        for(let i = 0; i < data.pokemon.results.length; i++){
-            if(data.search == data.pokemon.results[i].name){
+        for(let i = 0; i < data.results.results.length; i++){
+            if(data.search == data.results.results[i].name){
                 data.callType = 'pokemon';
-                methods.apiCall(data.pokemon.results[i].url);
+                methods.apiCall(data.results.results[i].url);
                 break;
             } 
         }
@@ -75,6 +72,7 @@ $(() => {
     // Function for showing the data of the first API call of a search
     methods.firstCallInfo = (stuff) => {
         console.log(stuff);
+        data.results = stuff;
         data.callType = 'species';
         methods.apiCall(stuff.species.url);
     }
@@ -82,6 +80,7 @@ $(() => {
     // Function for showing the data of the second API call of a search
     methods.secondCallInfo = (stuff) => {
         console.log(stuff);
+        data.searchType = 'pokemon';    
         data.callType = 'evo';
         methods.apiCall(stuff.evolution_chain.url);
     }
@@ -107,13 +106,30 @@ $(() => {
         `
     }
 
+    components.resultsPokemon = {
+        data: () =>{
+            return data;
+        },
+        methods: methods,
+        template: `
+        <section id="results" v-if="searchType == 'pokemon'">
+            <h2>{{results.name}}</h2>
+            <div>
+            </div>
+        </section> 
+        `
+    }
+
+    /* Vue App */
+
     // Vue Instance for main app
     const pokeApp = new Vue({
         el: '#pokeApp',
         data: data,
         methods: methods,
         components: {
-            'search-area': components.search
+            'search-area': components.search,
+            'results-pokemon': components.resultsPokemon,
         },
         mounted: methods.getPokemon()
     });
